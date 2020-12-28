@@ -1,0 +1,120 @@
+一 模型类对数据的查询、修改和删除
+    在模型类中对数据的增删改查，都是调用了从父类继承下来的objects来完成的。
+    1. 回顾添加 （对应于MySql的insert语句）
+        myModel.objects.create(属性1=值1，属性2=值2,...)
+    2. 基本查询（对应于MySql的select语句）
+        2.1 all()
+        myModel.objects.all() --返回值是QuerySet，元素是对象。
+        select * from 表名 --查询表中所有的数据
+        2.2 filter(属性1=值1，属性2=值2,...) 
+        条件查询，多个条件之间是与关系。返回值是QuerySet，元素是对象。
+        select * from 表名 where 条件
+        2.3 get(属性1=值1，属性2=值2,...)
+        返回符合条件的一个对象。对象不存在或对象有多个，都会产生异常。所以通常要try。
+        2.4 exclude(属性1=值1，属性2=值2,...) 
+        满足条件之外的数据， 返回值是QuerySet，元素是对象。
+        2.5 查询返回指定列
+        2.5.1 values(列1,列2,...)     --返回值类型也是QuerySet，元素是字典
+        2.5.2 values_list(列1,列2,...)  --返回值类型也是QuerySet，元素是元组
+        2.6 order_by('列1','-列2')
+              排序
+   3. 查询谓词
+       3.1 __contains  - 包含
+       3.2 __startswith -以...开始
+       3.3 __endswith - 以...结束
+             以上三者对应的是like子句 ，也就是模糊查询
+       3.4 __gt      >        __lt     <
+             __gte    >=      __lte   <=
+       3.5 __in  在范围之内
+       3.6 __range  闭区间 
+
+   4. 修改数据
+       4.1 修改单个数据
+             1查2改3保存   
+       4.2 批量修改
+             filter().update()
+   5. 删除数据
+       5.1 删除单个对象
+             删除对象不需要调用save()
+             try:
+             	get().delete()
+             except: 
+       5.2 批量删除
+             filter().delete()
+
+   实际开发时，如何处理删除操作？
+   更多的不是将数据从数据库中清除，而是增加了一个删除标记！
+   
+   user表
+   id      name            address         phone                   balance_no     is_active
+   1    zhangsan      北京东城       13600000000             7812323            1
+   删除时，把is_active的值由 1修改为 0
+二 图书管理项目
+    1 创建项目
+       django-admin startproject mysite4
+    2 切换目录，并启动服务
+       cd mysite4 
+       python3 manage.py runserver
+    3 创建并注册应用
+       python3 manage.py startapp bookstore
+       修改配置文件，注册应用
+    4 创建数据库
+       mysql -uroot -p123456
+       create database mysite4 default charset utf8;
+       use mysite4;
+    5 在bookstore应用下添加模型类，生成迁移文件，并通过迁移文件生成表结构
+       5.1 添加模型类Book
+       5.2 根据模型类生成迁移文件
+             python3 manage.py makemigrations
+       5.3 根据迁移文件生成表
+             python3 manage.py migrate
+       5.4 查看生成的表结构
+             show tables;
+             desc bookstore_book;
+    6 添加路由以及分布式路由
+             url                                视图函数                模板页                                  功能
+        books/                             list_view        bookstore/list_book.html          图书列表
+        books/add                       add_view      bookstore/add_book.html         添加图书
+        books/update/<int:bid> update_view bookstore/update_book.html   修改图书
+        books/delete?bid=1        delete_view            无                                      删除图书 
+三  数据库剩余的操作
+      1 聚合查询
+         1.1 不带分组的聚合
+               返回值 = myModel.objects.aggregate(结果变量名=聚合函数('列'))
+               返回值['结果变量名'] 
+         1.2 分组聚合
+               1.2.1 获取要分组聚合的列
+                        pub_set = myModel.objects.values('列1','列2')
+                        pub_set是一个QuerySet。
+                1.2.2 然后在聚合
+                        pub_set.annotate(结果变量名=聚合函数('列')) 
+     2 Q对象  
+        引入Q对象的目的是可以表示完整的逻辑关系 与或非。
+           
+                   
+                
+     
+            
+          
+   
+     
+             
+       
+                   
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+        
+           
+  

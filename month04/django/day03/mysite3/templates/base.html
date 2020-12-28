@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+             首页
+        {% endblock %}
+    </title>
+</head>
+<body>
+ <div  id="nav">
+     <a href="/">首页</a>
+     <a href="/news">新闻</a>
+     <a href="/sports">体育</a>
+     <a href="{% url 'page_url' '100' %}">pagen{带参数反向解析}</a>
+
+ </div>
+
+<div id="'content">
+    {% block content %}
+        <h1>网站所有热点事件</h1>
+    {% endblock %}
+</div>
+
+
+<div id="'footer">
+    京备字：16154545  联系方式:546576878798
+</div>
+
+
+</body>
+</html>

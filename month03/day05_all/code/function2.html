@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>匿名函数</title>
+</head>
+<body>
+  <button id="btn">click me</button>
+  <!-- 14:57~15:12 -->
+  <script>
+
+
+    // onclick="sayHello()"
+    // 分离事件的绑定
+    // 1.通过DOM方式 查找页面元素
+    // 通过id属性查找页面元素
+    var btn = document.getElementById('btn');
+    // dom对象/原生js对象
+    // console.log(btn);
+    // 通过操作对象的方式 操作页面元素
+    // console.log(btn.onclick);
+    // 页面中的功能大部分情况下不需要反复执行 通常会根据用户的操作执行或在特定条件下执行
+    // 建议使用匿名函数实现功能
+    btn.onclick = function(){
+      console.log('hello world');
+    }
+
+
+    // 声明提前
+    // 通过关键字声明的变量或函数 会自动提前到代码的最上方
+    // 如果变量声明提前 会将变量名提前到上分 值留在原地
+    // 如果函数声明提前 会将整个函数体一同提前 
+
+    // console.log(sayHello);//undefined
+    // function sayHello(){
+    //   console.log('hello world');
+    // }
+    // var sayHello = function (){
+    //   console.log('hello world');
+    // }
+
+    
+    // sayHello()
+
+    //匿名函数
+    // 通过()临时保存一个没有函数名的函数 
+    // 需要马上使用
+    // (function(){})() 
+    // (function (){
+    //   console.log('hello world');
+    // })()
+
+    // 将匿名函数赋值给变量
+    // 通过变量名找到函数 调用函数
+    // var sayHello = function (){
+    //   console.log('hello world');
+    // }
+    // sayHello();
+  </script>
+</body>
+</html>

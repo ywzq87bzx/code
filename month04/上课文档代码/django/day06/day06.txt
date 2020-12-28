@@ -1,0 +1,61 @@
+一 session和cookies
+    1. 回顾一下http协议
+        http协议是无状态的（协议本身不会保存状态信息）。
+    2. 作用
+        Cookies和Session就是为了保持会话状态而诞生的两个存储技术。
+    3. Cookies
+        1. 在客户端浏览器存储
+        2. 如何在浏览器查看
+            F12-打卡浏览器窗口，'存储'标签.
+        3.特点：
+           3.1 按域隔离的，不同的域之间无法访问
+           3.2 键值对存储，不能有中文，只能是ACS码字符串
+           3.3 cookies数据是浏览器自动提交给服务器的【csrf，跨域请求伪造攻击】
+        4.cookies的使用
+           4.1 设置/修改【通过响应设置cookies】
+                 HttpResponse.set_cookie 
+           4.2 删除【通过响应删除cookies】
+                 HttpResponse.delete_cookie
+                 值为"" ,max-age=0  expires=1970-1-1 00:00:00  
+           4.3 访问 【通过请求访问cookies】
+                 request.COOKIES.get
+        5. cookies在登录场景下的使用
+   4. session
+       4.1 在服务器端存储
+       4.2 即使使用session存储状态数据，也需要cookie存储sessionid
+       4.3 session的操作
+             session所有操作都是由request对象提供的。本身是一个类字典结构。
+       4.4 session的表的结构
+             session_key  - 表的主键，对应着cookies中的sessionid
+             session_data -在session中存储的数据(key-value)
+             expire_date -有效期
+       4.5 查看数据库，查看浏览器的cookies 
+二 网络云笔记项目
+    1. 创建项目
+    2. 切换到项目目录下，创建应用user、note，并注册
+    3. 创建数据库net_note,并配置，配置其它项。
+    4. 关闭以前的服务，启动我们当前项目的服务，打开浏览器，看Django测试页面。
+    5. 在应用下创建模型类：user:User类，note:Note类。
+        生成迁移文件，并根据迁移文件生成表结构
+        python3 manage.py makemigrations
+        python3 manage.py migrate
+    6. 用户注册功能的实现
+        密码使用md5计算保存Hash值。
+    7. 用户登录的实现
+        session存储用户的登录状态
+         
+             
+        
+
+
+
+
+
+
+
+
+
+
+       
+                 
+     

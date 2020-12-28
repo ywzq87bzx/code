@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>操作属性</title>
+</head>
+<body>
+  <input type="text" id="key">
+  <h1>xxx</h1>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // input.value  --> $('#key').val()
+    // h1.innerHTML = 值
+    // key.onchange = function(){}
+    $('#key').change(function(){
+      // 当值发生改变时  将文本框的值放入h1中显示
+      // h1.innerHTML = input.value
+      $('h1').html($('#key').val());
+    });
+  </script>
+</body>
+</html>

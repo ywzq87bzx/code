@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      float: left;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li><img src="../imgs/bk0-8.jpg" alt=""></li>
+    <li><img src="../imgs/bk1-8.jpg" alt=""></li>
+    <li><img src="../imgs/bk2-8.jpg" alt=""></li>
+    <li><img src="../imgs/bk3-8.jpg" alt=""></li>
+  </ul>
+
+  <script>
+    // 09:52~10:07
+    // var arr = []
+    // while(arr.length<4){
+    //   var num = Math.floor(Math.random() * 10);
+    //   var url = `../imgs/bk${num}-8.jpg`;
+    //   // 判断数组中是否有相同的url
+    //   if(arr.indexOf(url) == -1){
+    //     arr.push(url);
+    //   }
+    //   // var has = false;//默认没有
+    //   // for(var i=0;i<arr.length;i++){
+    //   //   if(arr[i] == url){
+    //   //     has = true//如果遍历到相同内容 改成true
+    //   //   }
+    //   // }
+    //   // if(has){
+    //   //   continue
+    //   // }
+    // }
+
+
+    var arr = [
+    "../imgs/bk0-8.jpg","../imgs/bk1-8.jpg",
+    "../imgs/bk2-8.jpg","../imgs/bk3-8.jpg",
+    "../imgs/bk4-8.jpg","../imgs/bk5-8.jpg",
+    "../imgs/bk6-8.jpg","../imgs/bk7-8.jpg",
+    "../imgs/bk8-8.jpg","../imgs/bk9-8.jpg"
+    ]
+    // 打乱数组顺序
+    arr.sort(function(){
+      // 如果值为正数就换位置
+      return Math.random()-0.5
+    })
+
+    var imgs = document.getElementsByTagName('img');
+    for (var i = 0; i < imgs.length; i++) {
+      imgs[i].src = arr[i];
+    }
+
+
+
+
+
+  </script>
+</body>
+
+</html>

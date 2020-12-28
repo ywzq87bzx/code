@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>switch语句</title>
+</head>
+<body>
+  <script>
+    var month = prompt('请输入月份');
+    // if(month == 1){
+    // }else if(month == 2){
+    // }else if(month == 3){
+    // }
+    switch(Number(month)){
+      // 10:56~11:10
+      // case的值和switch中的条件全等 执行case中的语句
+      // switch-case的结构在匹配单个值时会更快
+      case 1:
+      case 3:
+      case 5:
+      case 7:
+      case 8:
+      case 10:
+      case 12:alert('31天');
+              break;
+      case 2:alert('28天');
+              break;
+      case 4:
+      case 6:
+      case 9:
+      case 11:alert('30天');
+              break;
+      // 以上全部匹配失败 默认执行
+      default:
+      alert('输入不合法，请重试')
+    }
+  
+  </script>
+</body>
+</html>

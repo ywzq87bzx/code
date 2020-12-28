@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>通过class属性修改样式</title>
+  <style>
+    .red{
+      color:red;
+      /* font-size: 30px; */
+      font-weight: bold;
+     
+    }
+    .center{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">hello world</div>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // $('div').addClass('red');
+    // $('div').removeClass('center');
+    // 切换样式
+    // 当前有样式red  就移除样式red
+    // 当前没有样式red  就添加样式red
+    $('div').click(function(){
+      $('div').toggleClass('red');
+    })
+
+
+    // 
+    $('div').css('width','300px').css('height','300px').css('background-color','green');
+
+    $('div').css({
+      "width":"300px",
+      "height":"300px",
+      "background-color":"lightgreen",
+    })
+  </script>
+</body>
+</html>

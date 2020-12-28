@@ -1,0 +1,171 @@
+/* 首页样式文件 */
+/* 初始化样式 */
+h1,h2,h3,p,body,ul,li{
+  padding: 0;
+  margin: 0;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;/*去下划线*/
+}
+img{
+  display: block;
+}
+body{
+  background-color: #f2f2f0;
+  /* font-size: 16px;
+  font-family: monospace; */
+  font: 16px monospace;
+}
+
+/***************header*******************/
+header{
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 80px;
+  background-color: #555;
+}
+
+nav{
+  /* 控制内容位置 */
+  width: 1140px;
+  height: 80px;
+  /* border: 5px solid red; */
+  margin: 0 auto;
+  /* 文字垂直方向居中 */
+  line-height: 80px;
+}
+/* 14:52~15:07 */
+/* logo 字体大小26px  字体颜色#c1edf2  浮动排列 */
+.logo{
+  font-size: 26px;
+  float: left;
+}
+.logo>a{
+  color: #c1edf2;
+}
+/* 导航列表 ul */
+/* ul  浮动排列 距离h1 80px */
+/* li  浮动 使用margin调整li之间的距离 */
+/* li a 字体颜色#e5f2f2 鼠标移入时变成白色 */
+nav>ul{
+  /* border: 1px solid red; */
+  float: left;
+  margin-left:80px;
+}
+nav>ul>li{
+  float: left;
+  margin: 0 20px;
+}
+nav>ul>li>a{
+  color: #e5f2f2;
+}
+nav>ul>li>a:hover{
+  color: #fff;
+}
+/* 登录注册 */
+/* 文本颜色#e5f2f2  右浮动 注册紧贴在nav右侧  登录距离右侧远一些 */
+#login,#register{
+  float: right;
+  color: #e5f2f2;
+}
+#login{
+  margin-right: 50px;
+}
+
+
+
+/*******************main**********************/
+main{
+  width: 1140px;
+  /* height: 500px;
+  border: 5px solid red; */
+  margin: 100px auto 0;
+}
+/* 轮播图 */
+.banner{
+  width: 66%;
+  float: left;
+}
+.fader{
+  /* 为后代元素做参照物 */
+  position: relative;
+}
+.slide img{
+  width: 100%;
+  height: 100%;
+}
+/* 16:50~17:05 */
+/* 图片上的文字 */
+/* 绝对定位 定位到 fader下方 距离下方12% */
+/* 字体大小26px 白色字体  半透明黑色背景 背景宽度和图片宽度一致 */
+/* 调整文字距离 距离左侧边框40px */
+.imginfo{
+  position: absolute;
+  bottom: 12%;
+  /* right: 0;
+  left: 0; */
+  font-size: 26px;
+  color: #fff;
+  background-color: rgba(0,0,0,0.5);
+  padding:5px 0 5px 40px;
+  width: 100%; 
+  /* 默认情况下 元素实际大小为 内容+内边距+边框+外边距 */
+  /* box-sizing: content-box; */
+  /* width/height指包含边框在内的大小 */
+  /* 宽高包含内容+内边距+边框 */
+  /* 实际大小为 宽高+外边距 */
+  box-sizing: border-box;
+}
+
+/**************toppic*****************/
+.toppic{
+  width: 32%;
+  float: right;
+  /* border: 5px solid red; */
+}
+.toppic li{
+  /* 为后代元素做参照物 */
+  position: relative;
+  width: 100%;
+}
+.toppic li img{
+  width: 100%;
+  height: 250px;
+}
+/* 图片上的文字 */
+/* div 绝对定位 定位在li下方 宽度占100%
+ 调整文字和边框的距离 半透明的深黑色背景 白色字体 */
+.toppic div{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0 10px 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  box-sizing: border-box;
+}
+
+/* span 绝对定位 定位在li左上方 距离左上20px
+  半透明深黑色背景 字体颜色白色  水平垂直居中 字体大小12px
+  边框圆角2px
+*/
+.toppic span{
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* 最后一个子元素li */
+.toppic li:last-child{
+  margin-top:23px; 
+}

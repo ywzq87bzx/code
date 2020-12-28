@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>背景图片的显示</title>
+  <style>
+    /* 10:03~10:20 */
+    .A{
+      width: 25px;
+      height: 25px;
+      /* background-image: url('img01-1.png');
+      background-repeat: no-repeat;
+      background-position-y: -25px; */
+      /* background-position: 0 -25px; */
+      /* 背景： 颜色 图片 图片的重复方式 x轴偏移量 y轴偏移量 */
+      background: red url('img01-1.png') no-repeat 0 -25px;
+      /* 单独设置背景颜色 */
+      /* background: red; */
+      /* 单独设置背景图片 */
+      /* background: url('img01-1.png') no-repeat; */
+    }
+  </style>
+</head>
+<body>
+  <div class="A"></div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数据类型转换</title>
+</head>
+<body>
+  <script>
+    // 转字符串
+    console.log(true.toString());
+    // console.log(100.toString());
+    var a = 100;
+    console.log(a.toString()  , a);  
+  
+    // 转数值类型
+    console.log(Number('123'));
+    var res = Number('abc');
+    console.log(res,  typeof res);//NaN
+
+    var str = '132abc';
+    // '132abc'  -->   132
+    console.log(parseInt(str));
+    var str2 = 'abc123';
+    // 'abc123' --> NaN
+    console.log(parseInt(str2));
+    var str3 = '123.456';
+    // '123.456'  --> 123
+    console.log(parseInt(str3));
+    console.log(parseFloat(str3));
+    console.log(parseInt(3.14));
+  </script>
+</body>
+</html>

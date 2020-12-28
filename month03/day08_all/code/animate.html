@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>动画</title>
+  <style>
+    button{
+      font-size: 25px;
+    }
+  </style>
+</head>
+<body>
+  <div id="target">
+    <img src="../imgs/gm1-6.jpg" alt="">
+  </div>
+  <button id="btn">隐藏</button>
+  <button id="btn2">上推</button>
+  <button id="btn3">淡隐</button>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // 16:50~17:05
+    // 当按钮为隐藏时 点击隐藏div后 将按钮改为显示
+    // 当按钮为显示时 点击显示div后 将按钮改为隐藏
+    $('#btn3').click(function(){
+      var text = $('#btn3').html();
+      if(text == '淡隐'){
+        $('#target').fadeOut(3000,function(){
+          $('#btn3').html('淡现');
+        });
+      }else{
+        $('#target').fadeIn(3000,function(){
+          $('#btn3').html('淡隐');
+        });
+      }
+    })
+
+
+
+    $('#btn2').click(function(){
+      var text = $('#btn2').html();
+      if(text == '上推'){
+        $('#target').slideUp(3000,function(){
+          $('#btn2').html('下拉');
+        });
+      }else{
+        $('#target').slideDown(3000,function(){
+          $('#btn2').html('上推');
+        });
+      }
+    })
+
+
+
+
+    $('#btn').click(function(){
+      var text = $('#btn').html();
+      if(text == '隐藏'){
+        $('#target').hide(3000,function(){
+          $('#btn').html('显示');
+        });
+      }else{
+        $('#target').show(3000,function(){
+          $('#btn').html('隐藏');
+        });
+      }
+    })
+  </script>
+</body>
+</html>

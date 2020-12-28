@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>变量常量</title>
+</head>
+<body>
+  <script>
+    // 声明变量同时赋值
+    var a = 10;  
+    // 声明变量 没有赋值 默认值为undefined
+    var b;
+    console.log(a,b);
+    b = 200;
+    console.log(b);
+
+    var c=10,d=20;
+    console.log(c,d);
+
+    // 如果变量没有声明 但是有值 也可以使用
+    // 会改变变量的作用域
+    e = 'hello';
+    console.log(e);
+    // f is not defined 变量f没有声明
+    // console.log(f);
+
+    // 变量k的值为10 变量j的值为k 声明变量h值为j
+    var h = j = k = 10;
+    console.log(h,j,k);
+    // 声明变量l和m m的值为10
+    var l,m = 10;
+    console.log(l,m);
+  </script>  
+
+  <script>
+    // console.log(a);
+
+    const PI = 3.14;
+    console.log(PI*3);
+    // PI = 3.1415926;
+  </script>
+
+</body>
+</html>

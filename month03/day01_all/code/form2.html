@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>表单控件属性</title>
+</head>
+
+<body>
+    <!-- ?uname=qtx&upwd=123456 -->
+    <!-- ?uname=shibw&upwd=123456 -->
+    <!-- 查询字符串 格式key=value&key=value&... -->
+  <form action="" method="get">
+    <!-- <div>
+      <span>姓名：</span>
+      <input id="uname" name="uname" type="text"
+      placeholder="请输入用户名" maxlength="10"
+      >
+    </div>
+    <div>
+      <label for="upwd">密码：</label>
+      <input id="upwd" name="upwd" 
+      placeholder="请输入密码"
+      type="password">
+    </div> -->
+
+    <h1>
+      当领导说"你辛苦了"的时候应该如何回复？
+    </h1>
+    <input type="radio" checked name="answer" value="A">不辛苦，我应该的
+    <br>
+    <input type="radio" name="answer" value="B">不辛苦，我活该的  
+    <br>
+
+    <div>
+      <!-- multiple多选  selected默认选中  -->
+      <!-- size 默认为1，下拉菜单 如果值大于1会变成滚动下拉菜单 -->
+      <select name="city" multiple size="4" id="">
+        <option selected value="101">北京</option>
+        <option value="102">上海</option>
+        <option value="103">深圳</option>
+        <option value="104">沈阳</option>
+      </select>
+    </div>
+
+    <input type="checkbox" checked>记住密码
+    <input type="submit">
+  </form>
+</body>
+
+</html>

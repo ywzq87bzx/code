@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>导航条</title>
+  <style>
+    /* 清除默认样式 */
+    a{
+      color: #222;
+      text-decoration: none;
+    }
+    ul{
+      margin: 0;
+      padding: 0;
+      /* 清除列表样式 小圆点 */
+      list-style: none;
+      border: 1px solid red;
+      /* 解决子元素浮动父元素没有高度的问题 */
+      overflow: hidden;
+    }
+    /* 10:00~10:15 */
+    li{
+      float: left;
+    }
+    .first{
+      color: #999;
+      margin: 5px 0; 
+    }
+    .item{
+      margin: 5px 10px;
+      padding: 0 5px;
+    }
+    .active,.item:hover{
+      background-color: red;
+    }
+    .active>a,.item:hover>a{
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="first">难度：</li>
+    <li class="item"><a href="#">全部</a></li>
+    <li class="item"><a href="#">初级</a></li>
+    <li class="item active">
+      <a href="#">中级</a>
+    </li>
+    <li class="item"><a href="#">高级</a></li>
+  </ul> 
+
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // day07/nav.html
+    // 14:48~15:05
+    $('.item').click(function(){
+      // 点击当前item时添加样式类active，兄弟们移除样式active
+      $(this).addClass('active').siblings('.active').removeClass('active');
+
+      // 查找所有的item移除class active
+      // 为当前元素添加class active
+      // this 是原生js对象 --> $(this)jq对象
+
+      // $('.item').removeClass('active');
+      // $(this).addClass('active');
+    })
+
+
+
+    // var items = document.getElementsByClassName('item');
+    // console.log(items);
+    // for(var i=0;i<items.length;i++){
+    //   items[i].onclick = function(){
+    //     for(var j=0;j<items.length;j++){
+    //       items[j].className = 'item';
+    //     }
+    //     this.className = 'item active';
+    //   }
+    // }
+  </script>
+</body>
+</html> 

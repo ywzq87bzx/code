@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>日期对象</title>
+</head>
+<body>
+  <h1 id="show"></h1>
+  <script>
+    var now = new Date();
+    var noon = new Date('2020-12-04 12:00:00');
+    // console.log(noon-now);
+    // ms-->s  1000ms=1s
+    var leftTime = parseInt((noon - now)/1000);
+    // 时间差
+    console.log(leftTime);
+    // 通过时间差求 时 分 秒
+    // 显示距离中午12点还有xx时xx分xx秒
+    var hours = parseInt(leftTime/3600);
+    var minutes = parseInt(leftTime/60%60);
+    var seconds = leftTime % 60;
+    // 如果时分秒的值是一位数字 补0变成两位数字
+    // 10:55~11:10  1 --> 01   '0'+1
+    function addZero(num){
+      // if(num<10){
+      //   return '0'+num;
+      // }else{
+      //   return num.toString();
+      // }
+      return num<10?'0'+num:num+'';
+    }
+    show.innerHTML = `距离中午12点还有${addZero(hours)}时${addZero(minutes)}分${addZero(seconds)}秒`
+
+
+
+
+    // 当前的时间日期
+    // var now = new Date();
+    // console.log(now);
+    // var end = new Date(2020,1,1);
+    // var end = new Date('2020/1/1');
+    // console.log(end);
+    // now.getFullYear()//年
+    // now.getMonth()//月0~11
+    // now.getDate()//日期
+    // now.getDay()//星期
+    // now.getHours()//时
+    // now.getMinutes()//分
+    // now.getSeconds()//秒
+    // now.getMilliseconds()//毫秒  1000ms = 1s
+    // now.getTime()//时间戳
+    
+
+  </script>
+</body>
+</html>

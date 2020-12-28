@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>倒计时</title>
+</head>
+
+<body>
+  <h1 id="show"></h1>
+  <script>
+    // 16:52～17:07
+    // 根据date.html 实现距离18:00的倒计时
+    // 当前时间 
+    // 结束时间
+    // 计算时间差
+    // 求时分秒 补0
+    // 在页面中显示
+    function addZero(num) {
+      return num < 10 ? '0' + num : num + '';
+    }
+    function countDown() {
+      var now = new Date();
+      var end = new Date('2020-12-04 18:00:00');
+      var leftTime = parseInt((end - now) / 1000);
+      // 判断时间是否过去了
+      if (leftTime <= 0) {
+        show.innerHTML = '来晚啦 活动已经过去了';
+        clearInterval(timer);
+        return
+      }
+      var hours = parseInt(leftTime / 3600);
+      var minutes = parseInt(leftTime / 60 % 60);
+      var seconds = leftTime % 60;
+      show.innerHTML = `距离18点还有${addZero(hours)}时${addZero(minutes)}分${addZero(seconds)}秒`
+    }
+    countDown();
+    // 实现自动计时 setInterval()
+    var timer = setInterval(countDown, 1000);
+    // 如果时间超过18:00  停止计时
+  </script>
+</body>
+
+</html>

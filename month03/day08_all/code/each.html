@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>遍历操作</title>
+
+
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $('div').each(function (i, o) {
+        // 遍历元素之后要做的事情
+        // 参数i,o是由each传递的  i表示当前的索引值 o表示当前的页面元素对象(原生JS对象)
+        console.log(i, o);
+      });
+    })
+    // 对数据的处理
+    var arr = ['北京', '上海', '深圳', '沈阳'];
+    // for(var i=0;i<arr.length;i++){}
+    // for(var i in arr){}
+    $.each(arr, function (i, e) {
+      console.log(i, e);
+    })
+  </script>
+</head>
+
+<body>
+  <div>div1</div>
+  <div>div2</div>
+  <div>div3</div>
+  <div>div4</div>
+
+  <script>
+    // window.onload = function(){
+    //   console.log('hhhh')
+    // }
+
+    $(function(){
+      console.log('这是第二个$function')
+    })
+  </script>
+
+</body>
+
+</html>

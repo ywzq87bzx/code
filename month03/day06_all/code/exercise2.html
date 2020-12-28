@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input id="phone" type="text" placeholder="请输入手机号">
+  <span id="show">xxx</span>
+  <script>
+    // 当用户输入完手机号以后 
+    // 检测手机号的格式是否正确
+    var phone = document.getElementById('phone');
+    var show = document.getElementById('show');
+    // console.log(show)
+    phone.onchange = function(){
+      // 获取用户输入的手机号
+      var str = phone.value;
+      // 检测格式
+      var reg = /^1[34578]\d{9}$/;
+      // console.log(reg.test(str));
+      if(reg.test(str)){
+        show.innerHTML = '手机号格式正确';
+      }else{
+        show.innerHTML = '手机号格式有误';
+      }
+    }
+    // innerHTML前面内容没找到
+    // null没有innerHTML这个属性
+    // Uncaught TypeError: Cannot set property 'innerHTML' of null
+
+
+    // onfocus 获取焦点
+    // onblur 失去焦点
+    // phone.onfocus = function(){
+    //   console.log('hello world');
+    // }
+
+    // onchange 值发生改变
+    // phone.onchange = function(){
+    //   console.log('hello world');
+    // }
+
+    // oninput 输入事件
+    // phone.oninput = function(){
+    //   console.log('hello world');
+    // }
+  </script>
+</body>
+</html>

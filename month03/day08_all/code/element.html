@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>创建、添加、删除页面元素</title>
+</head>
+<body>
+
+
+  <hr>
+  
+  
+  <button id="add">创建并添加元素</button>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // 删除hr
+    $('hr').remove();
+
+    // 15:51~16:05
+    $('#add').click(function(){
+      var html = $('<h1></h1>');
+      html.html('使用JQ创建的对象').css('text-align','center');
+      // 作为body的子元素添加
+      // $('body').prepend(html);
+      // $('body').append(html);
+
+      // 作为兄弟元素添加
+      // $('hr').before(html);
+      // $('hr').after(html);
+    }) 
+  </script>
+</body>
+</html>

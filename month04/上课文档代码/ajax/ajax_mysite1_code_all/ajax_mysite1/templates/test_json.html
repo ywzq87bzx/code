@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TestJson</title>
+</head>
+<script src="/static/js/jquery-1.11.3.js"></script>
+<body>
+<button id="btn">TestJson</button>
+<script>
+    $(function(){
+        $('#btn').click(function(){
+           var json_obj={
+                "username":"tedu",
+                "age":18
+           };
+           console.log(json_obj.username);
+           console.log(json_obj.age);
+           var json_arr = [
+                {
+                    "username":"aid2009",
+                    "age":18
+                },
+                {
+                    "username":"python2009",
+                    "age":20
+                }
+           ];
+           $(json_arr).each(function(index,obj){
+                console.log(index,obj.username,obj.age)
+           });
+           $.each(json_arr,function(index,obj){
+                console.log(index,obj.username,obj.age)
+           });
+        })
+    })
+</script>
+</body>
+</html>

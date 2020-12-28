@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>闭包</title>
+</head>
+
+<body>
+  <button id="btn1">btn1</button>
+  <button id="btn2">btn2</button>
+  <button id="btn3">btn3</button>
+
+  <script>
+    // 通过标签名查找一系列元素
+    var btns = document.getElementsByTagName('button');
+    // console.log(btns);//页面元素的集合
+    // console.log(btns[0]);//第一个按钮
+    // 0~2的循环
+    // 遍历页面元素
+    for (var i = 0; i < btns.length; i++) {
+      // console.log(btns[i]);
+      // btns[i].onclick = function () {
+      //   // 函数内没有i向外查询 使用全局变量i
+      //   console.log(`第${i + 1}个按钮`);
+      // }
+      btns[i].onclick = (function (i) {
+        return function () {
+          // 实现具体功能
+          console.log(`第${i + 1}个元素`);
+        }
+      })(i);
+    }
+
+    // 提供运行环境
+    // function fun(i){
+    //   return function(){
+    //     // 实现具体功能
+    //     console.log(`第${i+1}个元素`);
+    //   }
+    // }
+  </script>
+  <script>
+    // 嵌套的函数 
+    // 外层函数返回内层函数
+    // 内层函数中引用外层函数的变量
+    function fun(i) {
+      return function () {
+        // 实现具体功能
+        console.log(`第${i + 1}个元素`);
+      }
+    }
+
+    console.log(fun());//function
+    var res = fun(0);
+    res();
+    var res2 = fun(1);
+    res2();
+    var res3 = fun(2);
+    res3();
+  </script>
+</body>
+
+</html>

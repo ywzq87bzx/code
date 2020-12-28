@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域请求</title>
+</head>
+<script src="/static/js/jquery-1.11.3.js"></script>
+<body>
+<button id="btn">跨域请求</button>
+<script>
+    // 预定义函数
+    function print(data){
+        console.log(data);
+    }
+    $(function(){
+        $('#btn').click(function(){
+            /*
+            // alert(111);
+            // 获取页面的body标签的元素
+            var body = document.getElementsByTagName('body')[0];
+            // 通过代码创建一个<script>标签
+            var script = document.createElement('script');
+            script.type ='text/javascript';
+            script.src='http://localhost:8000/cross_server?callback=print';
+            // 将<script>标签 动态的添加到body中
+            body.append(script);
+            */
+            /*
+            $.ajax({
+                url:'http://localhost:8000/cross_server',
+                type:'get',
+                dataType:'jsonp',
+                jsonp:'callback',
+                jsonpCallback:'print'
+
+            })
+            */
+            $.ajax({
+		    url:'http://localhost:8000/cross_server_json',
+		    type:'get',
+		    dataType:'jsonp',//指定为跨域访问
+		    // function(data)相当于上面的print函数
+            success: function(data){
+                console.log(data);
+            }
+	});
+
+
+        })
+    })
+</script>
+</body>
+</html>

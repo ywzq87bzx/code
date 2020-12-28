@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class='red' id='div1'>
+        hello,world
+    </div>
+
+    <div>
+        <input type="text" placeholder="请输入用户名">
+    </div>
+    <div>
+        <input type="checkbox" id='canSubmit' >请阅读并同意协议
+    </div>
+    <div>
+       <button id='btn'>提交</button>
+    </div>
+
+
+    <script src='jquery.min.js'> </script>
+    <script>
+        var res=$('#div1').attr('class')
+        console.log(res);
+        $('div1').attr('id','title');
+
+        $('#btn').click(function(){
+        //  var res=$('#canSubmit').attr('checked');
+         var res2=$('#canSubmit').prop('checked');
+         if (res2){
+             alert("提交成功")
+         }else{
+             alert("请勾选协议")
+         }
+        //  console.log('attr的'+res)
+        //     console.log('pop的'+res2)
+        })
+    
+    
+    </script>
+</body>
+</html>

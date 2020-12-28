@@ -1,0 +1,63 @@
+day01 回顾
+1 创建Django项目
+   django-admin startproject mysite2
+2 切换到项目目录下
+   cd mysite2
+   python3 manage.py runserver
+   注意：在启动mysite2之前，一定要确保以前的服务结束掉，否则会出现
+   端口号被占用错误。
+3 使用pycharm打开新的项目，一定要选择项目的根目录，避免导包错误。
+4 生成的文件的介绍
+day02
+1.http请求和响应
+   301 永久重定向  -以京东为例：
+   当我们向 360buy.com 发出请求后，京东服务器返回响应，在响应头Location中包含新的url地址:jd.com。客户端浏览器收到后，向新的url地址
+   发送get请求，这样的话，就重定向到新的url地址了。
+
+   开发时，我们使用Firefox的调试功能，F12打开调试窗口。
+2. 模板的使用
+   2.1 在项目目录下创建子目录 templates
+   2.2 在settings.py文件中，配置模板
+3 防止xss攻击的有效方式：转义
+   html.escape('js脚本')
+   演示：输入ipython3,进入python交互环境：
+   In [1]: import html
+
+   In [2]: script = '<script>alert(111)</script>'
+
+   In [3]: safe_script = html.escape(script)
+ 
+   In [7]: html.unescape(safe_script)
+   Out[7]: '<script>alert(111)</script>'        
+
+
+
+   过滤器
+   truncatechars:'8'  
+   在中文模式下，留下8个字符，但是末尾不会有... 所有通常情况下，我们自   加...  。
+   在英文模式下，留下7个字符，但是末尾有... 占一个字符，总共是8个字符。
+   总结：
+   1.客户端向服务器端通过url传参有几种方式：
+      1.1 path转换器
+      1.2 查询字符串
+   2. 代码编写完成后，检查一下终端，服务是否正常启动！如果没有正常启动      ，一定要看错误提示。
+   3. 如果启动成功，是通过点击表单按钮产生错误了，看浏览器的错误提示！
+   4. 浏览器的调试窗口，快捷键是F12。
+   5. 在视图函数中，看一下有没有拿到传递过来的数据，print函数会在终端      打印数据。
+   
+
+    
+   
+                
+    
+      
+
+
+
+
+
+
+
+  
+       
+   

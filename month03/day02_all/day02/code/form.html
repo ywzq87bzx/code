@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>表单</title>
+</head>
+<body>
+  <!-- 10:55~11:10 -->
+  <!-- 
+    get:将数据通过查询字符串的方式拼接在地址上发送给服务器
+        key=value&key=value...  查询字符串
+    限制：数据在地址栏上有格式要求 不能写特殊符号
+         大小不能2KB
+         明文显示 保密性差
+    post:将数据通过请求主体发送给服务器
+        key=value&key=value...
+        没有大小限制 没有格式限制 保密性较好
+   -->
+  <h1>增加管理员</h1>
+  <form action="" method="POST">
+    <table>
+      <tr>
+        <td>姓名：</td>
+        <td>
+          <input name="username" type="text">
+        </td>
+        <td>
+          十个字符以内
+        </td>
+      </tr>
+      <tr>
+        <td>密码：</td>
+        <td>
+          <input name="upwd" type="password">
+        </td>
+        <td>
+          十个字符以内
+        </td>
+      </tr>
+      <tr>
+        <td>性别：</td>
+        <td>
+          <input type="radio" name="sex" value="0">男士
+          <input type="radio" name="sex" value="1">女士
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>角色：</td>
+        <td>
+          <input name="type" value="0" type="checkbox">超级管理员 <br>
+          <input name="type" value="1" type="checkbox">账单管理员
+        </td>
+        <td>
+          至少选择一个角色
+        </td>
+      </tr>
+      <tr>
+        <td>头像：</td>
+        <td>
+          <input type="file">
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="submit" value="保存">
+          <input type="reset">
+        </td>
+        <td></td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>

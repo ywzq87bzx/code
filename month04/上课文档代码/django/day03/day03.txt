@@ -1,0 +1,128 @@
+一 day02 回顾
+    1. Django如何处理get和post请求
+        1.1 获取查询字符串的数据
+             request.GET.get(名称，默认值)
+             request.GET.getlist(名称)
+        1.2 获取表单元素的值
+             request.POST[名称] 
+    2. 模块
+        2.1 相关函数
+             render(request,'模板页文件',locals())
+        2.2 模板页中使用变量
+              {{ 变量 }}
+        2.3 模板标签
+              {% if 条件 %}
+              {% else %} 
+              {% endif %}
+
+              {% for item in 可迭代对象 %} 
+              {% empty %} 
+              {% endfor %}
+         2.4 过滤器
+         2.5 xss 攻击
+               避免xss攻击的有效手段对用户输入的内容做转义：
+               import html
+               html.escape(内容)
+二 day03 
+1. 模板继承
+    作业： 添加体育页面【5分钟】
+2. url反向解析
+    编写path函数：
+    path('news',views.news_index,name='news_url')
+    先定义了路由，然后给路由起了个名 ，正向
+    在页面中使用时：{% url 'news_url' %} ，根据url名读取url值。反向
+3. 静态文件
+    演示使用的3张图片的url:
+    相对地址、绝对地址和其它网站的地址。
+    cdn -内容分发网络。     
+4. Django中的应用-app
+    4.1 创建应用
+          python3 manage.py startapp 应用名称
+    4.2 在setting.py 文件中注册应用
+    4.3 如何处理在不同的应用下以及主目录下的模板文件名称相同的问题      
+         实际开发中，在每个应用下的templates目录下，再创建一个与应用
+         同名的子目录，模板文件放到子目录中。
+         index.html   主目录的模板文件
+         user/index.html   user应用下的模板文件 
+         music/index.html  music应用下的模板文件
+5. 使用MySql
+    5.1 进入mysql
+          mysql -uroot -p123456
+    5.2 创建数据库
+          create database mysite3 default charset utf8;
+    5.3 切换成当前数据库
+          use mysite3;
+
+    注意： 模型类的添加只能在某个应用下，不能在主目录下！
+    5.4 创建一个应用，名称为bookstore,并注册。
+          python3 manage.py startapp bookstore
+    5.5 在 bookstore应用下的models.py中添加Book类型
+    5.6 执行命令，生成迁移文件并同步到数据库
+          5.6.1 生成迁移文件
+          python3 manage.py makemigrations
+          5.6.2 根据迁移文件，在数据库创建表
+          python3 manage.py migrate
+          表的名称：应用名称_模型类名称小写    bookstore_book        
+    5.7 回到数据库
+          1.显示库中所有的表
+             show tables;
+             显示Django内置迁移文件生成的表和我们的迁移文件生成的表。
+           2.查看我们模型类生成的表结构
+             desc bookstore_book;
+           3.注意的问题 
+              假设新增字段前，数据表中已经有数据了
+              id    title          price
+               1     python       50
+               2     Django       100
+
+               id    title          price       pub     market_price
+               1     python       50                           
+               2     Django      100               
+               新增字段要么允许为空，要么有默认值
+            4. 迁移文件混乱的解决办法：
+                4.1 删除所有的迁移文件
+                4.2 删库重建
+                4.3 执行 makemigrations命令重新生成迁移文件
+                4.4 执行migrate命令根据迁移文件生成数据表
+      5.8 插入数据
+            使用模型类对数据做增删改查都要通过从父类继承下来的objects对象
+            例如:
+            book = Book.objects.create(属性1=值1,属性2=值2,...) 
+            每创建一个对象，相当于在表中插入了一条记录。
+      5.9 在Django shell中操作
+            Django项目中的一个交互式环境。
+            进入Django shell：
+            python3 manage.py shell
+In [1]: from bookstore.models import Book
+
+In [2]: Book.objects.create(title='python',pub='清华大学出
+   ...: 版社',price=50,market_price=55)
+Out[2]: <Book: Book object (1)>
+ 
+作业： 创建时，在bookstore应用下的models文件中创建Author类型
+           如果有新的模型类添加，希望Django shell中使用的时候，
+           需要先退出shell，重新进入。否则，新的模型类不可用!
+           
+                       
+                  
+              
+               
+ 
+
+
+
+
+
+
+
+
+
+
+
+             
+
+
+
+
+          
+       

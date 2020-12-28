@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>查找页面元素</title>
+</head>
+<body>
+  <h1>上面的兄弟 你们好吗？</h1>
+  <ul id="list">
+    <li >item1</li>
+    <li class="item">item2</li>
+    <li class="item">item3</li>
+    <li >item4</li>
+  </ul>
+  <h1>hello world</h1>
+  <p>中午吃啥？</p>
+
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // $('li:last').css('color','red');
+    //奇数索引值  第二个(1)   第四个(3)
+    $('li:odd').css('color','red');
+    $('li:even').css('color','blue');
+    // eq(i) 匹配索引值等于i的元素
+    // lt(i) 小于i
+    // gt(i) 大于i
+    $('li:eq(2)').css('font-size','30px');
+    $('li:lt(2)').css('font-weight','bold');
+    // 找全部li中除了最后一个li的其他元素
+    $('li:not(li:last)').css('text-align','center');
+
+
+    // $('#list').parents()//找父元素和祖先元素，可以传入选择器作参数精确查找某些祖先元素
+    // $('#list').parent()//找父元素
+    // $('#list').siblings() 查找全部的兄弟元素 ，可以传入选择器作参数精确查找某些兄弟元素
+    // console.log($('#list').siblings('p'));
+
+
+    // 选择器1+选择器2   相邻兄弟选择器
+    // 找选择器1  后面的第一个  符合选择器2  的元素
+    // $('#list+h1').css('color','red');//生效
+    // $('#list+p').css('color','red');//不生效
+    // console.log($('#list+p'));//空的jq对象
+
+    // 选择器1~选择器2  通用兄弟选择器
+    // 找选择器1 后面所有 符合选择器2 的元素
+    // $('#list~p').css('color','blue');
+
+    // list.style = 'list-style:none';
+    // $('#list').css('list-style','none');
+    // $('.item').css('color','red');
+    // $('li').css('font-weight','bold');
+  </script>
+</body>
+</html>

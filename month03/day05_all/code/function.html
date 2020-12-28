@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>函数</title>
+</head>
+<body>
+  <script>
+    // var uname = prompt('请输入用户名');
+    // 
+    function sayHello(uname){
+      console.log('hello '+uname);
+    }
+    // console.log(sayHello);
+    // 如果函数定义形参后 调用函数时没有实参传递 参数默认值为undefined
+    // sayHello();
+
+    var a = 10;
+    var b = 20;
+    function myAdd(a,b=10){
+      // console.log(a+b);
+      var res = a+b;
+      return res;
+    }
+    var res = myAdd(a,b)
+    console.log('a和b相加的结果为：'+res)
+  </script>
+</body>
+</html>

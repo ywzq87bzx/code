@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板页测试</title>
+</head>
+<body>
+<h1>模板页测试</h1>
+<h3>班级名称：{{ name | truncatechars:'8' }}</h3>
+<h3>班级人数：{{ count | add:"-100" }}</h3>
+<h3>城市分布：{{ citys }} | {{ citys.2 }}</h3>
+<h3>班级成绩：{{ score }} | {{ score.django }}</h3>
+<h3>班级形象代言人：{{ person.show }}</h3>
+<h3>函数：{{ func1 }}</h3>
+<h3>一段js脚本:{{ script }}</h3>
+
+{% if count > 200 %}
+<h3> 这是一个大班级 </h3>
+{% else %}
+<h3> 这是一个小班级 </h3>
+{% endif %}
+
+{% for item in lst %}
+<p>{{ forloop.counter }}. {{ item }}</p>
+{% empty %}
+<p> 是非成败转头空 </p>
+{% endfor %}
+
+</body>
+</html>

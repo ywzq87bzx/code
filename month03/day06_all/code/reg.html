@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>正则表达式对象</title>
+</head>
+<body>
+  <script>
+    // 15:55~16:10
+    var str = 'This is a test string';
+    var reg = /is/ig;
+    var reg2 = new RegExp('this','ig');
+    // console.log(reg,reg2);
+    console.log(reg.test(str));
+
+    //字符串的查找和替换
+    var res = str.match(reg);
+    console.log(res);
+
+    var newStr = str.replace(reg,'at');
+    console.log(newStr);
+    console.log(str);
+  </script>
+</body>
+</html>

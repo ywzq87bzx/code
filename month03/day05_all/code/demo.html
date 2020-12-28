@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>作用域</title>
+</head>
+<body>
+  <script>
+
+    var a = 10;
+    function fun4(a){
+      // 将参数a自增 函数结束后 参数释放不影响全局内容
+      a++;
+      console.log(a);//11
+    }
+    // 将全局变量a作为参数传递给函数 
+    // 只使用 不修改全局变量
+    fun4(a);
+    console.log(a);//10
+
+    function fun5(){
+      // 直接使用全局变量 修改全局变量
+      a++;
+      console.log(a);
+    }
+    fun5();
+
+
+
+
+
+
+    // 15:55~16:10
+    function fun3(){
+      var a,b=10;
+      console.log(a,b);
+    }
+    fun3();
+    // console.log(b);//ReferenceError
+    // console.log(a);//ReferenceError
+
+    function fun2(){ 
+      var a = b = c = 10;
+    }
+    fun2();
+    // a是函数内部声明的变量 是局部变量
+    // console.log(a);//ReferenceError
+    // b,c没声明但是有值 是全局变量
+    console.log(b);//10
+    console.log(c);//10
+
+
+    // var a = 10;
+    // function fun(){
+    //   // var a = 1;
+    //   // 变量如果没声明但是有值时 为全局变量
+    //   // a = 11;
+    //   // a = a+1
+    //   // a+=1
+    //   // a++;
+    //   console.log(a);//?11
+    // }
+    // fun();
+    // console.log(a);//?11
+  </script>
+</body>
+</html>

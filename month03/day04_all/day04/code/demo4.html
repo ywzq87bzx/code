@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自增自减运算</title>
+</head>
+<body>
+  <script>
+      //自增 在原本数值的基础上每次递增1
+      //自减 在原本数值的基础上每次递减1
+      var a = 10;
+      // a += 1;  --> a = a+1;
+      // a -= 1;
+      
+      // 后缀写法 
+      // 先返回当前变量的值 然后再做自增自减运算
+      // a++;
+      // console.log(a);
+      // a--;
+      // 前缀写法
+      // 先做自增自减运算 然后再返回值
+      // ++a;
+      // --a;
+      // a的值  10     11    12
+      var res = a++ + a++ + a++;
+      // a++    10     11    12
+      console.log(res);
+
+      var a = 1;
+      // a的值   1     2     3
+      var res = a++ + ++a + a++;
+      // 自增     1    3     3
+      console.log(res,a);
+      // a =      4    3     2
+      var res2 = --a + a-- - a--;
+      //          3    3      2
+      console.log(res2)
+
+
+      var a = 0;
+      a++;
+
+  </script>
+</body>
+</html>

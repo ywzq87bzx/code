@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>interval 定时器</title>
+</head>
+
+<body>
+  <button id="btn1">创建周期性定时器</button>
+  <button id="btn2">停止周期性定时器</button>
+  <script>
+    var timerId = null;
+    btn1.onclick = function () {
+      // 如果没有相同的定时器  创建定时器
+      if (timerId == null) {
+        // 创建周期性定时器
+        // 将timerId变成全局变量 方便停止时使用
+        timerId = setInterval(function () {
+          console.log('hello world');
+        }, 1000);
+      }
+    }
+    btn2.onclick = function () {
+      // 停止周期性定时器
+      clearInterval(timerId);
+      timerId = null;//清空变量
+    }
+  </script>
+
+  <script>
+    //一次性定时器
+    var timer = setTimeout(function(){
+      alert('hello world')
+    },3000);
+    clearTimeout(timer);
+  </script>
+</body>
+
+</html>

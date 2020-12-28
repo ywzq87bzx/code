@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- <div id='header'></div>
+    <script  src="jquery.min.js"></script>
+    
+    <script>  
+    var header=document.getElementById('header')
+    var $header=$('#header')
+    $header.html('hello')
+    console.log($header) 
+    console.log(header) 
+    </script> -->
+    <ul id='list'>
+        <li>item1</li>
+        <li class='item'>item2</li>
+        <li class='item'>item3</li>
+        <li>item4</li>
+    </ul>
+    <h1>hello world</h1>
+    <p>中午吃了啥</p>
+    <script src='jquery.min.js'></script>
+    <script>
+
+        $('#list').css('list-style','none')
+        $('.item').css('color','red');
+        $('li').css('font-weight','bold');
+        // $('h1+p').css('color','red');
+        $('#list~p').css('color','blue');
+        $('#list').siblings()
+        $('list').parents()
+    
+    </script>
+<script>
+   
+
+</script>
+
+</body>
+</html>

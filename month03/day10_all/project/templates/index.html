@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>博客项目首页</title>
+  <!-- 引入外部样式文件 -->
+  <link rel="stylesheet" href="../static/css/index.css">
+  <link rel="stylesheet" href="../static/css/easyfader.css">
+
+  <!-- 引入外部JS文件 -->
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/jquery.easyfader.min.js"></script>
+  <script src="../static/js/blogs.data.js"></script>
+  <script src="../static/js/fader.data.js"></script>
+  <!-- 自定义外部JS文件 -->
+  <script src="../static/js/index.js"></script>
+</head>
+
+<body>
+  <!-- HTML5规范的语义化标签 -->
+  <header>
+    <!-- 导航条--》logo  导航菜单  登录注册 -->
+    <nav>
+      <!-- logo -->
+      <h1 class="logo">
+        <a href="#">个人博客</a>
+      </h1>
+
+      <!-- 导航列表 -->
+      <ul>
+        <li><a href="#">网站首页</a></li>
+        <li><a href="#">文章列表</a></li>
+        <li><a href="#">我的相册</a></li>
+        <li><a href="#">留言</a></li>
+        <li><a href="#">关于我</a></li>
+        <li><a href="#">发表博客</a></li>
+      </ul>
+
+      <!-- 登录注册 -->
+      <div>
+        <a href="#" id="register">注册</a>
+        <a href="#" id="login">登录</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 上半部分 轮播图/侧边图片 -->
+    <div>
+      <!-- 左边轮播图 -->
+      <div class="banner">
+        <ul class="fader">
+          <!-- 每一张轮播图内容 -->
+          <!-- 在inex.js中生成li -->
+          <!-- 控制轮播图元素 -->
+          <li class="fader_controls">
+            <!-- 左右箭头 -->
+            <div class="page prev" data-target="prev">&lt;</div>
+            <div class="page next" data-target="next">&gt;</div>
+            <!-- 轮播图页标 -->
+            <ul class="pager_list">
+              <!-- js自动添加 -->
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- 右边侧边图片 -->
+      <ul class="toppic">
+        <li>
+          <a href="#">
+            <img src="../static/images/toppic01.jpg" alt="">
+            <div>linux升级py3,按照pip,svn</div>
+            <span>Linux</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="../static/images/toppic02.jpg" alt="">
+            <div>精通python编程——python深入浅出教程</div>
+            <span>python</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- 清除浮动的影响 -->
+      <div class="clear"></div>
+    </div>
+    <!-- 下半部分 博客列表 -->
+    <div class="blogsbox">
+      <!-- 每一条博客内容 -->
+      
+    </div>
+  </main>
+
+  <footer>
+    <div>
+      Design by
+      <a href="#">个人博客</a>
+      <a href="#">备XXXXXXXXXXX号-1</a>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域请求</title>
+</head>
+
+<script src="/static/js/jquery-1.11.3.js"></script>
+<body>
+<button id="btn">跨域请求</button>
+<script>
+    function print(data){
+        console.log(data);
+    }
+    $(function(){
+        $('#btn').click(function(){
+<!--            alert(111);-->
+<!--            var body=document.getElementsByTagName('body')[0];-->
+<!--            var script=document.createElement('script');-->
+<!--            script.type='text/javascript';-->
+<!--            script.src='http://localhost:8000/cross_server?callback=print';-->
+<!--            body.append(script);-->
+
+<!--            $.ajax({-->
+<!--                url:'http://localhost:8000/cross_server',-->
+<!--                type:'get',-->
+<!--                dataType:'jsonp',-->
+<!--                jsonp:'callback',-->
+<!--                jsonpCallback:'print'-->
+<!--            })-->
+
+<!--             $.ajax({-->
+<!--                url:'http://localhost:8000/cross_server',-->
+<!--                type:'get',-->
+<!--                dataType:'jsonp',-->
+<!--                success:function(data){-->
+<!--                    console.log(data)-->
+<!--                }-->
+
+             $.ajax({
+                url:'http://localhost:8000/cross_server_json',
+                type:'get',
+                dataType:'jsonp',
+                success:function(data){
+                    console.log(data)
+                }
+            })
+
+
+        })
+    })
+</script>
+
+</body>
+</html>

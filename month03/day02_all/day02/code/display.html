@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>元素的显示方式</title>
+
+  <style>
+    .red{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      display: none;
+    }
+    span{
+      /* display 设置元素的显示方式 */
+      /* block 块元素 独占一行 能设置宽高 默认占父元素100%的宽度 */
+      /* inline 行内元素  可以和其他元素在同一行显示 不能设置宽高  大小由内容决定 */
+      /* inline-block 行内块 可以设置宽高 也能够和其它元素在同行显示 */
+
+      /* none 隐藏元素 */
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="red"></div>
+  <span class="red"></span>
+</body>
+</html>

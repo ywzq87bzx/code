@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TestJqGET</title>
+</head>
+<body>
+<script src="/static/js/jquery-1.11.3.js"></script>
+<button id="btn">测试JQueryGet请求</button>
+<div id="show"></div>
+<script>
+    // 等页面中所有dom元素全部加载成功后，代码才会执行
+    // 代码中可能会用到dom元素
+    $(function(){
+        $('#btn').click(function(){
+            // ajax请求
+            $.ajax({
+                url:'/test_jq_get_server',
+                type:'get',
+                success:function(res){
+                    $('#show').html(res);
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

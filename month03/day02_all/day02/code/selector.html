@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>selector选择器</title>
+
+  <style>
+    div{
+      /* 宽度  高度  背景颜色 */
+      width: 200px;
+      height: 200px;
+      /* background-color: aquamarine; */
+    }
+    #div1{
+      background-color: red;
+    }
+    #div2{
+      background-color: blue;
+    }
+    #div3{
+      background-color: green;
+    }
+
+    .orangered{
+      color: orangered;
+    }
+    /* .h1{
+      font-size: 32px;
+      
+      font-weight: bold;
+    } */
+    #div3,p,span{
+      font-size: 40px;
+    }
+
+    p.h1{
+
+    }
+    div#div1{}
+
+    /* 15:00~15:15 */
+    ul>li>a{
+
+    }
+    ul a{
+
+    }
+    ul>li{
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <ul>
+    <li>
+      <a href="">item1</a>
+    </li>
+    <li>
+      <a href="">item2</a>
+    </li>
+    <li>
+      <a href="">item3</a>
+    </li>
+    <li>
+      <a href="">item4</a>
+    </li>
+  </ul>
+
+
+
+  <!-- <div id="div1" class="orangered">div1</div> -->
+
+  <!-- div#div1.h1 + tab  -->
+  <!-- div.h1.orangered + tab -->
+
+
+  <!-- <div id="div1" class="h1"></div>
+  <div id="div2">div2</div>
+  <div id="div3">div3</div>
+  <p class="orangered h1">第一个p元素</p>
+  <span class="h1 orangered">这是span标签</span> -->
+</body>
+</html>

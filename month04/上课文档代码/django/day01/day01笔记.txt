@@ -1,0 +1,83 @@
+一. 自我介绍
+二. 鸡汤（对大家的要求）
+     1.团队精神
+        1.1 分学习小组【项目小组】（5~8人）
+     2.学习要有激情
+三.课程的组成部分【大概是20天】
+    1.Django 框架（8.5天）
+    2.redis数据库(3天)
+       基于内存的kv型的数据库
+    3.ajax (1.5天)
+       异步的js和xml。
+    4.博客项目(7天)
+       4.1 集成第三方短信验证功能
+       4.2 使用Celery框架完成异步任务的操作
+       4.3 使用了缓存技术
+       4.4 接入支付宝功能
+四. 准备工作
+     保证Django 的版本是2.X版本
+     查看版本，在Linux终端输入ipython3，进入python的交互环境
+     执行以下代码：
+     In [1]: import django
+     In [2]: print(django.VERSION)
+     (2, 2, 12, 'final', 0)     #输出的版本
+     建议：所有学员使用咱们中心统一的新版的虚拟机镜像。(7月份以后)
+~~~~~~
+   day01
+~~~~~~
+前端: html div+css js实现特效 ，前端负责"颜值"
+后端: 使用框架、缓存、内存数据库等等。 负责快速、安全的响应。
+python常见框架： 
+1.Django-重量级框架、集成了很多功能模块。     
+2.flask -轻量级框架、开发时更加灵活。
+一 Django的介绍
+    Django框架最早是用来做新闻内容管理系统的。
+    Django的官网: https://www.djangoproject.com/
+    中文翻译网站：https://yiyibooks.cn   一译book
+    Django的目标：
+    Django makes it easier to build better Web apps more quickly and     with less code.
+    Django的版本 ，选择的是2.2.x LTS-长期稳定支持版。
+二 Django安装
+    1.在线安装
+       sudo pip3 install django==2.2.12
+    2.离线安装
+       2.1 卸载原先旧的版本
+             sudo pip3 uninstall django
+       2.2 从ftp下载离线安装包
+三 Django的示意图，了解组成部分以及每一部分的作用
+四 创建第一个Django项目
+     1. 创建项目
+         django-admin startproject mysite1
+     2. 使用pycharm打开项目时，一定要选择项目的根目录。
+     3. manage.py是项目管理的主程序，非常重要！
+     4. 启动服务
+         切换到项目目目录下
+         cd mysite1
+         python3 manage.py runserver
+     5. 查看自己的IP地址：
+          Linux: ifconfig
+          windows: ipconfig              
+         在配置文件的ALLOWED_HOSTS 中增加本机的ip地址，然后启动服务
+         python3 manage.py 0.0.0.0：8000     #0.0.0.0 表示任意IP
+     6. URL介绍
+         protocol :// hostname[:port] / path [?query][#fragment]
+         6.1 protocol  协议
+         http 是最常见的网络协议，在网络上是明文传输的。
+         https 是另外一种常见的网络协议，在网络是密文传输的。目前各大
+                  门户网站都采用https。
+         6.2  hostname[:port]  主机名称和端口
+         6.3  path 路由地址
+         6.4   [?query] 可选项 ，称之为查询字符串。最常见的一种客户端向服                务器的传参方式。
+         6.5   [#fragment] 可选项， 锚点。定位到文档内的某一位置
+         重点： path 路由地址和  [?query]
+         
+               
+    
+
+
+
+
+
+     
+                 
+                

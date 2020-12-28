@@ -1,0 +1,11 @@
+一、python核心
+二、python高级
+三、python web
+   前端开发  HTML(1天) CSS(2天) JavaScript(5天) 
+   project(2天)
+   后端开发
+
+
+复习
+页面结构 h1~h3 p span div
+img a ul table form

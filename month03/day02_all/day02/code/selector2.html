@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>伪类选择器</title>
+  <style>
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: aqua;
+      /* transition (all)所有的样式的变化不会马上改变 而是在2s内完成变化 */
+      transition: all 0.5s;
+    }
+    div:hover{
+      background-color: red;
+      /* 改变鼠标指针 变成小手 */
+      cursor: pointer;
+    }
+
+    /* 访问前 */
+    a:link{
+      font-size: 30px;
+    }
+    /* 访问后 */
+    a:visited{
+      color:pink;
+    }
+    /* 鼠标移入 */
+    a:hover{
+      background-color: orange;
+    }
+    /* 激活 鼠标按住时 */
+    a:active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <a href="http://www.taobao.com">百度一下</a>
+</body>
+</html>

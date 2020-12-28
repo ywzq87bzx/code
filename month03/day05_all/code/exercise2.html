@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>操作页面元素</title>
+</head>
+<body>
+  <input type="text" id="text">
+  <button id="btn">显示</button>
+  <h1 id="show">xxx</h1>
+  <script>
+    // var text = document.getElementById('text');
+    console.log(text,btn,show);
+    // 当按钮被点击的时候
+    // 获取text的值 放入 show中显示
+    btn.onclick = function(){
+      // 获取表单元素的值时 使用 对象.value
+      console.log(text.value);
+      // 获取普通页面元素的内容时 使用对象.innerHTML
+      console.log(show.innerHTML);
+      // console.log(show.innerText);
+      show.innerHTML = text.value;
+    }
+  </script>
+</body>
+</html>

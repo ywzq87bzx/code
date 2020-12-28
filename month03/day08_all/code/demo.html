@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="header"></div>
+
+  <!-- 一定要先引入文件 再使用jQuery操作 -->
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    var header = document.getElementById('header')
+    // jquery
+    // Uncaught ReferenceError: $ is not defined jQuery文件没有引入或引入失败
+    console.log($);
+    var $header = $('#header');
+    // 原生JS对象 或 DOM对象
+    // 原生JS对象可以使用document提供的方法和属性
+    // 如： innerHTML   对象.className 
+    // 对象.onclicke 
+    // header.innerHTML = 'hello world';
+    console.log(header);
+    // 10:56~11:10
+    //jQuery对象 可以使用jQuery提供的方法和属性
+    console.log($header);
+    $header.html('hello world');
+
+    // js对象-->jq对象
+    console.log($(header));
+    // jq对象-->js对象
+    console.log($header[0]);
+
+
+
+
+
+    // document.getElementById('header').innerHTML = 'hello world';
+
+    // 定义一个函数 通过id查找元素
+    // function $$(id){
+    //   return document.getElementById(id);
+    // }
+    // $$('header').innerHTML = 'hello world';
+  </script>
+</body>
+</html>

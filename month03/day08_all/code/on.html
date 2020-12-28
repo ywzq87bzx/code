@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>绑定事件</title>
+</head>
+<body>
+  <!-- <h1>这是动态生成的标签</h1> -->
+  <button id="btn">click me</button>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    $('#btn').click(function(){
+      $('body').prepend('<h1>这是动态生成的标签</h1>')
+    })
+    // $('h1').click(function(){
+    //   alert('ok');
+    // })
+    
+    $('body').on('click','h1',function(){
+      alert('ok');
+    })
+  </script>
+</body>
+</html>

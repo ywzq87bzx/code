@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>选择器的优先级</title>
+
+  <style>
+    div {
+      /* 权重 1*/
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+
+    #div1 {
+      /* 权重 100 */
+      background-color: green;
+    }
+    /* 15:57~16:15 */
+    .blue {
+      /* 权重 10 */
+      background-color: blue;
+    }
+    #list div{
+      /* 权重 100 + 1 */
+      background-color: aqua;
+    }
+    #list div:hover{
+      /* 100+1+10 */
+      background-color: pink;
+    }
+
+    div,p,#header,.list{
+      /* 权重 1 */
+      background-color: blueviolet;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="list">
+    <li>
+      <div id="div1" class="blue"></div>
+    </li>
+  </ul>
+</body>
+
+</html>

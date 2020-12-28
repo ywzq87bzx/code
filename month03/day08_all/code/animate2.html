@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自定义动画</title>
+  <style>
+    #ball{
+      width: 200px;
+      height: 200px;
+      background-color: orangered;
+    }
+  </style>
+</head>
+<body>
+  <div id="ball"></div>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    $('#ball').animate({
+      "border-radius":"50%",
+      "margin-left":"300px",
+    },2000,function(){
+      // 再次设置一个自定义动画
+      $('#ball').animate({
+        "margin-left":"0",
+      },2000,function(){
+        $('#ball').fadeOut(2000)
+      })
+    })
+  </script>
+</body>
+</html>

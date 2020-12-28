@@ -1,0 +1,43 @@
+一 文件上传
+    方式1：python的方式
+                编程处理更多的细节
+    方式2：Django的方式
+                上传文件对应于创建一个模型类的对象，细节由Django来完成。
+    步骤: 1 创建一个应用 test_upload ,并注册
+                python3 manage.py startapp  test_upload 
+             2 在应用下的models.py中编写与文件上传相关的模型类，模型类中要有：
+                models.FileField(upload_to='子目录')    
+             3.生成迁移文件，并生成表结构
+                python3 manage.py makemigrations
+                python3 manage.py migrate
+             4.上传文件的视图函数中，创建对象即可完成上传   
+二  Django中的用户认证
+      1. 项目的用户权限模块到底使用Django中的用户认证，还是自己开发？
+      2. 前面咱们讲的是通过Django命令来操作用户认证模块，今天讲的内容是希望以代码
+          的方式将Django的用户认证集成到项目中。
+      3.auth扩展
+三  项目部署
+      1 申请云服务器，在云服务器上配置和你开发的机器上一样的环境
+      2 将开发机器上的项目源码远程复制到你的云服务器上
+         除了使用教案上的命令外，也可以使用一些可视化的工具。finalshell  
+          python语言开发的项目，python是解释性语言。
+          java开发的项目，java是编译性语言。
+          c/c++的项目，生成的是二进制的文件。 
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+             

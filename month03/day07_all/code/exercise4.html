@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>轮播图</title>
+  <style>
+    ul {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border: 5px solid red;
+      width: 739px;
+      height: 419px;
+    }
+    .pager{
+      position: absolute;
+      top: 0;
+      left: 0;
+      /* 不透明度0(透明)～1(不透明) */
+      opacity: 0;
+      transition: all 0.5s;
+    }
+    .active{
+      opacity: 1;
+    }
+    #ll,#rr{
+      position: absolute;
+      top:50%;
+      margin-top:-20px;
+    }
+    #rr{
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li>
+      <img class="pager active" src="../imgs/gm1-6.jpg">
+    </li>
+    <li>
+      <img class="pager" src="../imgs/gm2-6.jpg">
+    </li>
+    <li>
+      <img class="pager" src="../imgs/gm3-6.jpg">
+    </li>
+    <li>
+      <img class="pager" src="../imgs/gm4-6.jpg">
+    </li>
+    <li>
+      <img class="pager" src="../imgs/gm5-6.jpg">
+    </li>
+
+    <li>
+      <img id="ll" src="../imgs/l1-6.png" alt="">
+      <img id="rr" src="../imgs/r1-6.png" alt="">
+    </li>
+  </ul>
+
+
+  <script>
+    // 查找页面元素
+    // 左右箭头按钮
+    var ll = document.getElementById('ll');
+    var rr = document.getElementById('rr');
+    // 所有的轮播图片
+    var pagers = document.getElementsByClassName('pager');
+
+    var i = 0;//当前图片的索引值
+    rr.onclick = function(){
+      // 向右切换
+      // 0 1 2 3 4 0 1 2...
+      // 清除当前图片的class active
+      pagers[i].className = 'pager'
+      // 确定下一张图片的位置
+      i++;
+      if(i==pagers.length){
+        i=0;
+      }
+      // 为下一张图片添加class active 
+      pagers[i].className = 'pager active'
+    }
+
+    // 实现向左切换图片
+    // 实现自动向右切换图片
+    // 实现鼠标移入图片停止定时器 鼠标移出启动定时器
+    // onmouseover 鼠标移入
+    // onmouseout 鼠标移出
+  </script> 
+</body>
+
+</html>

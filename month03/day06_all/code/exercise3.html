@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      float: left;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ul>li*4>img -->
+  <ul>
+    <li><img src="../imgs/bk0-8.jpg" alt=""></li>
+    <li><img src="../imgs/bk1-8.jpg" alt=""></li>
+    <li><img src="../imgs/bk2-8.jpg" alt=""></li>
+    <li><img src="../imgs/bk3-8.jpg" alt=""></li>
+  </ul>
+
+  <script>
+    // 生成0～9之间的随机数
+    // 使用随机生成一个路径 `../imgs/bk${num}-8.jpg`
+    // 将生成的内容添加到数组
+    var arr = []
+
+    for (var i = 0; i < 4; i++) {
+      var num = Math.floor(Math.random() * 10);
+      var url = `../imgs/bk${num}-8.jpg`;
+      arr.push(url);
+    }
+    // 根据数组中的内容在页面中显示图片
+    // 通过标签名查找页面img
+    var imgs = document.getElementsByTagName('img');
+    // 遍历取到每一个页面元素 然后修改src属性值
+    for (var i = 0; i < imgs.length; i++) {
+      imgs[i].src = arr[i];
+    }
+
+
+
+
+
+  </script>
+</body>
+
+</html>

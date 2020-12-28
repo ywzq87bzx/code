@@ -1,0 +1,35 @@
+/* 对index.css的样式调整 */
+/* 为轮播图的父元素ul添加一个可以支撑内容的高度 */
+.fader{
+  padding-top: 70%;
+}
+
+/* 每一张轮播图 */
+.fader .slide{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* 添加图片轮播效果 */
+  opacity: 0;
+  z-index: 1;
+  transition: all 0.5s;
+}
+
+/* 16:56~17:10 */
+/* 设置左右箭头和轮播图页标的堆叠次序 显示在当前轮播的图片之上 */
+.prev,.next,.pager_list{
+  z-index: 4;
+}
+.prev:hover,.next:hover{
+  cursor: pointer;
+}
+/* 隐藏小圆点中的文字 */
+.pager_list li{
+  text-indent: -9999px;
+}
+
+/* 重写侧边栏图片的间距 让侧边栏和轮播图对齐 */
+.toppic li:last-child{
+  margin-top:25px;
+}

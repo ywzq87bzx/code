@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>相对定位 relative</title>
+  <style>
+    div{
+      position: relative;
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      /* 相对定位 以自己原本的位置为参照物 */
+      /* 不会脱离默认布局方案 保留原始位置 */
+      /* 一般用于对页面元素的微调 */
+      /* 偏移属性 left bottom right top */
+      /* 取正数值 向相反方向移动 
+         取负数值 向相同方向移动
+       */
+      /* left:-100px;
+      bottom: 100px; */
+      /* left: 500px; */
+      top: 100px;
+    }
+    p{
+      width: 200px;
+      height: 200px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <p></p>
+</body>
+</html>

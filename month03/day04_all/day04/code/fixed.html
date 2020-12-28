@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>固定定位 fixed</title>
+  <style>
+    #aside{
+      /* 固定定位 */
+      /* 参照物 当前窗口 */
+      /* 脱离默认布局方案 */
+      position: fixed;
+      width: 80px;
+      height: 300px;
+      background-color: red;
+      right: 0;
+      /* 元素左上角距离上方50%  整体元素靠下显示 */
+      top: 50%;
+      margin-top: -150px;
+    }
+    p{
+      height: 800px;
+    }
+    .p1{
+      background-color: cadetblue
+    }
+    .p2{
+      background-color: crimson
+    }
+    .p3{
+      background-color: chartreuse
+    }
+    body{
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <p class="p1"></p>
+  <p class="p2"></p>
+  <p class="p3"></p>
+
+  <div id="aside"></div>
+</body>
+</html>

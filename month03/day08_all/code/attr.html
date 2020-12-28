@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>操作元素属性</title>
+</head>
+<body>
+  <div class="red" id="div1">
+    hello world
+  </div>
+
+  <div>
+    <input type="text" placeholder="请输入用户名">
+  </div>
+  <div>
+    <input type="checkbox" id="canSubmit">请阅读并同意协议
+  </div>
+  <button id="btn">提交</button>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // 当按钮被点击的时候 判断用户是否选中协议
+    // btn.onclick = function(){}
+    $('#btn').click(function(){
+      // 如果用户选中协议 弹框提示提交成功
+      // 如果用户没有选中协议 弹框提示 请勾选协议
+      if($('#canSubmit').prop('checked')){
+        alert('提交成功')
+      }else{
+        alert('请勾选协议')
+      }
+
+
+
+      // 通过checked属性判断按钮是否被选中
+      // var res = $('#canSubmit').attr('checked')
+      // var res2 = $('#canSubmit').prop('checked');
+      // console.log($('#canSubmit'));
+      // console.log('attr的结果'+res);
+      // console.log('prop的结果'+res2);
+    })
+
+
+
+    // 获取元素属性的值
+    // var res = $('#div1').attr('class');
+    // console.log(res);
+    // var res = $('#div1').prop('class');
+    // console.log(res);
+    // 修改/设置元素属性的值
+    // $('#div1').attr('id','title');
+    // $('#div1').prop('id','title');
+  </script>
+</body>
+</html>
