@@ -125,9 +125,10 @@ open in browser
      <span>行分区标签，用于对特殊文本特殊处理</span>
      <b>加粗标签</b>
      <strong>强调标签，效果同b标签</strong>
-     <label>普通文本标签，常与表单控件结合实现文本与控件的绑定</label>
+     <label>普通文本标签，常与表单控件结合实现文本与控件的绑定</label> 通过绑定表单标签的id关联
      <i>斜体标签</i>
      <u>下划线标签</u>
+     lorem是假文，p>lorem按table键
      ```
     - 格式标签：
      浏览器会忽略代码中的换行和空格，只显示为一个空格。想要实现页面中的换行，需要借助于换行标签。
@@ -173,6 +174,9 @@ open in browser
     ```html
     <a href="http://www.taobao.com" target="_self">淘宝</a>
     <a href="http://www.baidu.com" target="_blank">百度</a>
+    <a href='#'>返回顶部</a> 编写返回顶部
+    <a href='#id'>返回顶部</a> 编写返回某个id位置
+    <a href='#img.html id'>返回顶部</a> 超链接到当前文件夹img.html中id的位置
     ```
 ## 3. 常用结构标签
   - 列表标签 
@@ -243,14 +247,57 @@ open in browser
         <tbody></tbody>
     </table>
     ```
+    
+    ```
+    <table border="1px" cellspacing="0">
+        <!-- tr*4>td*3 + tab -->
+        <tr>
+          <!-- colspan跨列合并 横向  -->
+          <!-- 删除当前行内多余的单元格 -->
+          <td colspan="3">1 <br> 1</td>
+          <!-- <td>121212</td> -->
+          <!-- <td>13</td> -->
+        </tr>
+        <tr>
+          <!-- rowspan跨行合并 纵向 -->
+          <!-- 删除后面行的对应列的单元格 -->
+          <td rowspan="3">21</td>
+          <td>22</td>
+          <td>23</td>
+        </tr>
+        <tr>
+          <!-- <td>31</td> -->
+          <td>32</td>
+          <td>33</td>
+        </tr>
+        <tr>
+          <!-- <td>41</td> -->
+          <td>42</td>
+          <td>43</td>
+        </tr>
+      </table>
+    
+      <table border="1px" cellspacing="0">
+        <tr>
+          <th colspan="3">信息表</th>
+        </tr>
+        <tr>
+          <td>姓名</td>
+          <td>年龄</td>
+          <td>成绩</td>
+        </tr>
+      </table>
+    ```
+    
   - 表单标签
     表单用于采集用户的信息并提交给服务器，由表单元素和表单控件组成。表单元素form负责提交数据给服务器，表单控件负责收集数据。
+    
      - 表单使用<form></form>
     | 属性名  | 取值                                                         |
     | ------- | ------------------------------------------------------------ |
     | action  | 设置数据的提交地址                                           |
     | method  | 设置数据的提交方式，默认为get方式，可以设置为post            |
-    | enctype | 设置数据的编码类型，涉及二进制数据提交（例如图片，文件，音视频等），必须设置数据的提交方式为post,编码类型为"multipart/form-data" |
+    | enctype | 设置数据的编码类型，涉及二进制数据提交（例如图片，文件，音视频等），必须设置数据的提交方式为post,编码类型为"multipart/form-data"（**涉及文件上传时，必须加上**） |
     例如：
     ```html
     <form action="" method="" enctype="">
@@ -258,8 +305,8 @@ open in browser
     </form>
     ```
      - 表单控件使用（重点）
-     表单控件用于采集用户信息，可设置以下标签属性
-
+ 表单控件用于采集用户信息，可设置以下标签属性
+    
     |  属性名   |   取值  |
     | ---- | ---- |
     | type | 设置控件类型 |
@@ -281,6 +328,49 @@ open in browser
   <input type="submit">  提交按钮
   <select></select>  下拉菜单
   <textarea></textarea> 文本域 
+```
+
+```
+    form表单实际应用
+    <!-- ?uname=qtx&upwd=123456 -->
+    <!-- ?uname=shibw&upwd=123456 -->
+    <!-- 查询字符串 格式key=value&key=value&... -->
+  <form action="" method="get">
+    <!-- <div>
+      <span>姓名：</span>
+      <input id="uname" name="uname" type="text"
+      placeholder="请输入用户名" maxlength="10"
+      >
+    </div>
+    <div>
+      <label for="upwd">密码：</label>
+      <input id="upwd" name="upwd" 
+      placeholder="请输入密码"
+      type="password">
+    </div> -->
+
+    <h1>
+      当领导说"你辛苦了"的时候应该如何回复？
+    </h1>
+    <input type="radio" checked name="answer" value="A">不辛苦，我应该的
+    <br>
+    <input type="radio" name="answer" value="B">不辛苦，我活该的  
+    <br>
+
+    <div>
+      <!-- multiple多选  selected默认选中  -->
+      <!-- size 默认为1，下拉菜单 如果值大于1会变成滚动下拉菜单 -->
+      <select name="city" multiple size="4" id="">
+        <option selected value="101">北京</option> 
+        <option value="102">上海</option>
+        <option value="103">深圳</option>
+        <option value="104">沈阳</option>
+      </select>
+    </div>
+
+    <input type="checkbox" checked>记住密码
+    <input type="submit">
+  </form>
 ```
 
 
