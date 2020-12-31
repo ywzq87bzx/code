@@ -1,4 +1,5 @@
 import json
+import random
 
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
@@ -8,6 +9,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 
 from tools.login_dec import login_check
+from tools.sms import YunTongXin
 from user.models import UserProfile
 import hashlib
 
@@ -109,3 +111,16 @@ def user_avatar(request,username):
     user.save()
     result={'code':200,'username':user.username}
     return JsonResponse(result)
+
+def sms_view(request):
+    json_str=request.body
+    py_obj=json.loads(json_str)
+    phone=py_obj['phone']
+    code=random.randint(1000,9999)
+    print(phone,code)
+    #1.先验证码暂存，以备注册使用
+    #2 发送短信验证码
+    x=YunTongXin(settings.SMS_ACCOUNT_ID,settings.SMS_ACCOUNT_TOKEN,settings.SMS_APP_ID,settings.SMS_TEMPLATE_ID)
+    res=x.run(phone,code)
+    print(res)
+    return JsonResponse({'code':200})
