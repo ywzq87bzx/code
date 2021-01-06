@@ -47,7 +47,7 @@ app = Celery('guoxiaonao', broker='redis://:password@127.0.0.1:6379/1')
 #若redis无密码，password可省略
 #app = Celery('guoxiaonao', broker='redis://:@127.0.0.1:6379/1')
 
-# 创建任务函数
+# 创建任务函数，执行耗时操作。
 @app.task
 def task_test():
     print("task is running....") 
@@ -56,7 +56,7 @@ def task_test():
 
 ```shell
 #Ubuntu 终端中, tasks.py文件同级目录下 执行
-celery -A tasks worker --loglevel=info
+celery -A tasks worker --loglevel=info　＃日志级别
 #执行后终端显示如下，证明成功！
 ```
 

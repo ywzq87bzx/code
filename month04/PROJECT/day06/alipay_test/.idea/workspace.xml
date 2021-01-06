@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a16c515a-af52-4844-b875-da3704244f05" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../day05/ddblog/ddblog/celery.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../day05/ddblog/topic/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../day05/ddblog/user/tasks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/jquery-1.11.3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/key_file/alipay_public_key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/key_file/app_private_key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/key_file/app_public_key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/ajax_alipay.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ddblog/message/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ddblog/tools/cache_dec.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../文档/PROJEXT/Celery/Celery.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../文档/PROJEXT/Celery/Celery.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="1mgZlO4tlhsS5oZGmh8Ie3uZl0n" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ddblog" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/key_file" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/key_file" />
+      <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/static/js" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a16c515a-af52-4844-b875-da3704244f05" name="Default Changelist" comment="" />
+      <created>1609917344714</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609917344714</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="593" y="342" width="933" height="402" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609920773906">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="593" y="342" width="933" height="402" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1609920773906" />
+    <state x="721" y="444" key="FileChooserDialogImpl" timestamp="1609931137413">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="721" y="444" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1609931137413" />
+    <state x="766" y="454" width="598" height="178" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1609920677005">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="766" y="454" width="598" height="178" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1609920677005" />
+  </component>
+</project>

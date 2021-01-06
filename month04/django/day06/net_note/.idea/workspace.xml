@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a01abbcc-3fa6-4b8a-83a9-7e33e0cc0ba0" name="Default Changelist" comment="" />
+    <list default="true" id="a01abbcc-3fa6-4b8a-83a9-7e33e0cc0ba0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day05/client/.idea/client.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day05/ddblog/.idea/ddblog.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day05/ddblog/ddblog/celery.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day05/ddblog/topic/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day05/ddblog/user/tasks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day06/alipay_test/.idea/alipay_test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day06/alipay_test/payment/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day06/alipay_test/static/js/jquery-1.11.3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day06/alipay_test/static/key_file/alipay_public_key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day06/alipay_test/static/key_file/app_private_key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day06/alipay_test/static/key_file/app_public_key.pem" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day06/alipay_test/templates/ajax_alipay.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day06/client/.idea/client.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day06/ddblog/.idea/ddblog.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day06/ddblog/message/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../PROJECT/day06/ddblog/tools/cache_dec.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../文档/PROJEXT/Celery/Celery.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../文档/PROJEXT/Celery/Celery.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +36,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
   <component name="ProjectId" id="1llwwglFGSWcxVtP6nWVvGASLi9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -24,7 +49,8 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../day07/mysite7" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager" selected="Python.pythoneml">
     <configuration name="111" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
