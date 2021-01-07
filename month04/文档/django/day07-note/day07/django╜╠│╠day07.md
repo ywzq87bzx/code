@@ -47,6 +47,10 @@ else:
 
 3，缓存导航及页脚
 
+**使用在页面变化频率不高的场景**
+
+**使用缓存注意数据的一致性（缓存与原来的数据要一致）**
+
 
 
 ### Django中设置缓存
@@ -55,7 +59,7 @@ Django中提供多种缓存方式，如需使用需要在settings.py中进行配
 
 1,数据库缓存   mysite7  改配置  migrate ,    添加缓存配置项  createcachetable
 
-Django可以将其缓存的数据存储在您的数据库中
+Django可以将其缓存的数据存储在您的数据库中（redis,mysql)
 
 ```python
 CACHES = {
@@ -79,7 +83,7 @@ python3 manage.py createcachetable
 
 
 
-2,文件系统缓存
+2,文件系统缓存(**读取比较慢，不常用**)
 
 ```python
 CACHES = {
@@ -140,7 +144,13 @@ urlpatterns = [
 {% endcache %}
 ```
 
-- 缓存api
+>整体缓存：
+>
+>优点：使用简单，只需要在缓存的视图函数前增加装饰器cache_page即可。
+>
+>缺点：使用不够灵活，只能整体缓存，无法实现按需要缓存。一般情况下，很难获取缓存的键。只能有效期到达，才能删除。
+
+- 缓存api（应用程序编程接口，就是函数）
 
   作用：局部缓存部分结果
 
@@ -154,6 +164,7 @@ urlpatterns = [
   
   #默认配置引入【指的配置中的default项】 等同于 caches['default']
   from django.core.cache import cache
+  
   
   #常规命令 set
   #key: 字符串类型
@@ -191,11 +202,11 @@ urlpatterns = [
   #返回值  成功删除的数据条数
   cache.delete_many(['a', 'b', 'c'])
   
-  ```
-
+```
   
+  >**setting.py中配置缓存，可以为多个应用创建自己的缓存，caches,每个起自己的名字。**
 
-### 浏览器中的缓存    
+### 浏览器中的缓存(重在理解，浏览器中前端缓存)    
 
 ![浏览器缓存](images\浏览器缓存.png)
 
@@ -264,7 +275,7 @@ Expires:Thu, 02 Apr 2030 05:14:08 GMT
 - 中间件类:
     - 中间件类须继承自 `django.utils.deprecation.MiddlewareMixin`类
     - 中间件类须实现下列五个方法中的一个或多个:
-        - `def process_request(self, request):` 执行路由之前被调用，在每个请求上调用，返回None或HttpResponse对象 
+        - `def process_request(self, request):` 执行路由之前被调用，在每个请求上调用，返回None或HttpResponse对象 (**返回None代表通过，HttpResponse代表返回**)
         - `def process_view(self, request, callback, callback_args, callback_kwargs):` 调用视图之前被调用，在每个请求上调用，返回None或HttpResponse对象
         - `def process_response(self, request, response):` 所有响应返回浏览器  被调用，在每个请求上调用，返回HttpResponse对象
         - `def process_exception(self, request, exception):` 当处理过程中抛出异常时调用，返回一个HttpResponse对象
@@ -305,13 +316,27 @@ MIDDLEWARE = [
         - request.META['REMOTE_ADDR'] 可以得到远程客户端的IP地址
         - request.path_info 可以得到客户端访问的GET请求路由信息
     - 答案:
-        ```python
-        
-        ```
+
+```python
+class MyMW(MiddlewareMixin):
+    visit_times = {}
+
+    def process_request(self, request):
+        cip = request.META['REMOTE_ADDR']
+        if not re.match(r'^/test', request.path_info):
+            return
+        times = self.visit_times.get(cip, 0)
+        if times >= 5:
+            return HttpResponse('no way!')
+        self.visit_times[cip] = times + 1
+        print('%s visit we %s times' % (cip, self.visit_times[cip]))
+```
 
 
 
 ## 跨站请求伪造攻击 CSRF
+
+> 跨站请求伪造攻击的原理：在娱乐网站上提交页面中使用的是表单提交，**表单提交是可以跨域的**。当点击提交按钮时，浏览器请求是自带cookeie的，因为登录银行账户后，**忘了退出，所以在cookei中就存储了用户的登录认证信息**，银行网站受到请求后，就认为是该用户发出了转账请求，极有可能转账成功！
 
 - 跨站请求伪造攻击
   
@@ -332,8 +357,8 @@ MIDDLEWARE = [
     
     ```python
      {% csrf_token %}
-        当用户发GET请求时，Django返回页面时，在页面中多了一个隐藏域，隐藏域保存了token值，当我POST提交请求时，在中间件函数中，会检查有无这个token,没有就会禁止访问（403），否则，检查TOKEN的值，成功后，就可以提交请求了。
-    外部网站的页面不是从Django服务器获取的，所以即便它也添加了 {% csrf_token %}，获取不到token，在检查时，它一定会被禁止。
+        **当用户发GET请求时，Django返回页面时，在页面中多了一个隐藏域，隐藏域保存了token值，当我POST提交请求时，在中间件函数中，会检查有无这个token,没有就会禁止访问（403），否则，检查TOKEN的值，成功后，就可以提交请求了。
+    外部网站的页面不是从Django服务器获取的，所以即便它也添加了 {% csrf_token %}，获取不到token，在检查时，它一定会被禁止。**
        {% csrf_token %}每次都会产生一个新的值
   ```
   
