@@ -5,7 +5,7 @@
 ​	Asynchronous Javascript And Xml
 ​		异步的       JS        和   xml(*EX*tensible *M*arkup *L*anguage) [json]
 
-​    通过 JS 异步的向服务器发送请 求并接收响应数据
+​    **通过 JS方式 异步的向服务器发送请 求并接收响应数据XML。**
 
 ​	同步访问：
 ​		当客户端向服务器发送请求时，服务器在处理的过程中，浏览器只能等待，效率较低
@@ -138,6 +138,45 @@ xhr.send(null);
 
 //注意：若含有请求参数 - URL后拼接 查询字符串 QueryString
 //ex: xhr.open('get','/url?key=value&key=value',asyn)
+
+**可以通过静态文件设置引入xhr对象:**
+//STATIC_URL='/static'
+//STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
+//1.项目根目录下创建static的文件夹——创建js文件夹（浏览器动态）——新建common.js模块——将创建xhr对象构建成函数，并设置return值为xhr;
+    function createXhr(){
+    	if (window.XMLHttpRequest){
+            var xhr=new XMLHttpRequest();
+            console(xhr);
+        }else{
+            var xhr=new ActiveXObject('Microsoft.'Microsoft.XMLHTTP');
+        }
+    return xhr;
+}
+  2.在templates下新建test_xhr_get.html文件,引入xhr.js模块:
+	<script src='/static/js/common.js'></script>
+	<body>
+        <button onclick='getXhr()'>getXhr</button>
+		<div id='show'></div>
+		<script>
+            function getXhr(){
+                //1.创建xhr对象
+            	var xhr=creatXhr();
+            	//2.创建get请求
+            	xhr.open('GET','/test_xhr_get_server',true);
+            	//3.设置回调函数
+            	xhr.onreadystatechange= function(){
+    				if(xhr.readyState == 4 && xhr.status == 200){
+        				//接收响应
+       					 docunment.getElementById('show').innerHTML=xhr.responseText;
+    						}
+						}
+            	//4.发送请求
+            	xhr.send(null)
+        }
+        </script>
+	</body>
+  3.url中新建/test_xhr_get_server路由和视图函数，并设置返回响应。
+
 ```
 
 ​	练习：注册框的 用户名检查
@@ -177,9 +216,9 @@ var csrf=$("[name='csrfmiddlewaretoken']").val();
 
 
 
-## 2.jquery对 ajax 的支持
+## 2.jquery对 ajax 的支持（生成一个JS库，方便对js和ajax操作）
 
-#### 	$.ajax({})
+#### 	$.ajax({})（推荐用书，锋利的JQuery)
 
 ```javascript
 参数对象中的属性：
@@ -192,7 +231,7 @@ var csrf=$("[name='csrfmiddlewaretoken']").val();
 				name:"sf.zh",
 				age:18
 			}
-	4.dataType : 字符串，响应回来的数据的格式
+	4.dataType : 字符串，响应回来的数据的格式(这个是服务器返回的数据类型)
 		1.'html'
 		2.'xml'
 		3.'text' 
@@ -202,7 +241,27 @@ var csrf=$("[name='csrfmiddlewaretoken']").val();
 	5.success:回调函数，请求和响应成功时回来执行的操作
 	6.error : 回调函数，请求或响应失败时回来执行的操作
 	7.beforeSend : 回调函数，发送ajax请求之前执行的操作，如果return false，则终止请求
-    8.contentType : 当有请求体有数据提交时，标明提交方式，默认值为'application/x-www-form-urlencoded; charset=UTF-8'
+    8.contentType : 当有请求体有数据提交时，标明提交方式，默认值为'application/x-www-form-urlencoded; charset=UTF-8'（这个是提交到服务器的数据类型）
+jquery发送ajax请求
+<script src='/static/js/jquery-1.11.3.js'></script>
+<button id="btn">测试JQueryGet请求</button>
+<div id="show"></div>
+<script>
+    // 等页面中所有dom元素全部加载成功后，代码才会执行
+    // 代码中可能会用到dom元素
+    $(function(){
+        $('#btn').click(function(){
+            // ajax请求
+            $.ajax({
+                url:'/test_jq_get_server',
+                type:'get',
+                success:function(res){
+                    $('#show').html(res);
+                }
+            })
+        })
+    })
+</script>
 ```
 
 
@@ -280,13 +339,13 @@ var csrf=$("[name='csrfmiddlewaretoken']").val();
 	}
 ```
 
-​		1.$arr.each();
+​		1.$(arr).each();
 
 ​			$arr : jQuery中的数组
 
 ```javascript
         //语法：
-        $arr.each(function(index,obj){
+        $(arr).each(function(index,obj){
             index:遍历出来的元素的下标
             obj:遍历出来的元素
         });
@@ -298,6 +357,42 @@ var csrf=$("[name='csrfmiddlewaretoken']").val();
         //语法：
         $.each(arr,function(index,obj){});
         arr : js 中的普通数组
+```
+
+```
+案例：如何在js中操作json:
+<script src="/static/js/jquery-1.11.3.js"></script>
+<body>
+<button id="btn">TestJson</button>
+<script>
+    $(function(){
+        $('#btn').click(function(){
+           var json_obj={
+                "username":"tedu",
+                "age":18
+           };
+           console.log(json_obj.username);
+           console.log(json_obj.age);
+           var json_arr = [
+                {
+                    "username":"aid2009",
+                    "age":18
+                },
+                {
+                    "username":"python2009",
+                    "age":20
+                }
+           ];
+           $(json_arr).each(function(index,obj){
+                console.log(index,obj.username,obj.age)
+           });
+           $.each(json_arr,function(index,obj){
+                console.log(index,obj.username,obj.age)
+           });
+        })
+    })
+</script>
+</body>
 ```
 
 #### 4.后台处理JSON
@@ -315,11 +410,12 @@ var csrf=$("[name='csrfmiddlewaretoken']").val();
 #### 5.Python中的JSON处理
 
 ```python
+json_str=request.body
 import json
-#序列化 - python对象变为json字符串
-jsonStr = json.dumps(元组|列表|字典)
 #反序列化 - json字符串变为python对象
-py_obj = json.loads(jsonStr)
+py_obj = json.loads(json_Str)
+#序列化 - python对象变为json字符串，发送给浏览器（django库通常会包含）
+jsonStr = json.dumps(元组|列表|字典)
 ```
 
 ​	Django中的JSON处理
@@ -334,20 +430,20 @@ return HttpResponse(json_str)
 d = {'a': 1}
 return JsonResponse(d)
 
-字典类型不需要设置第二个参数
-列表或元祖需要safe参数设置为False
+重要**字典类型不需要设置第二个参数
+列表或元祖需要safe参数设置为False**重要
 d = [{'a': 1},{'a': 2}]
-return JsonResponse(d,safe=False)
+return JsonResponse(d,safe=False)才可以自动序列化为json串，浏览器才可以自动解析。
 ```
 
 #### 6.前端中的JSON处理
 
 ```javascript
 #序列化
-JSON字符串JSON.stringify(JSON对象)
+JSON字符串JSON.stringify(JSON对象)(浏览器json字符串去往服务器端前序列化为json串)
 
 #反序列化
-JSON对象=JSON.parse(JSON字符串)
+JSON对象=JSON.parse(JSON字符串)（从服务器端到浏览器端讲数据转成json字符串）（通常会包含）
 
 ```
 
@@ -367,7 +463,7 @@ JSON对象=JSON.parse(JSON字符串)
 
 	浏览器的同源策略：
 	同源：多个地址中，相同协议，相同域名，相同端口被视为是"同源"
-	在HTTP中，必须是同源地址才能互相发送请求，非同源拒绝请求(<script>和<img>除外)。
+	在HTTP中，必须是同源地址才能互相发送请求，非同源拒绝请求(<script>和<img>除外)。<img src=>用来获取图片也是跨域的。
 	
 	http://www.tedu.cn/a.html
 	http://www.tedu.cn/b.html
@@ -389,14 +485,23 @@ JSON对象=JSON.parse(JSON字符串)
 通过 <script> 向服务器资源发送请求
 由服务器资源指定前端页面的哪个js方法来执行响应的数据
 
+```
+如何通过script标签执行跨域请求？
+tedu.cn发请求，预先定义一个函数
+	func1(data){
+	alert(data;)
+	}
+<script src='https://www.baidu.com/common.js?callback=func1'></script>
+跨域请求时，通过script发请求，带着查询字符，值是预定义的函数名称，返回的并不是直接的数据，而是一个函数调用语句func1('hello world');浏览器就会执行这句代码。调用预先定义好的函数，函数的参数从跨域的服务器返回的。
+```
+
 #### 3,   jquery 的跨域
 
 ```javascript
+
 jsonp - json with padding
 用户传递一个callback(回调函数)参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据
-回调函数：是自己编写的，由系统决定满足一定条件后调用。
-
-跨域请求时，通过script发请求，带着查询字符串，值是预定义函数的名称，返回的并不是直接的数据，而是一个函数调用的语句func1('hello world');浏览器就会执行这段代码。调用预定义好的函数，函数的参数是从跨域服务器返回的。
+***回调函数：是自己编写的，由系统决定满足一定条件后调用。***
 
 ex:
 	当前地址： http://127.0.0.1:8000/index
@@ -420,3 +525,53 @@ ex:
 
 
 ```
+
+```
+实际案例：
+<script src="/static/js/jquery-1.11.3.js"></script>
+<body>
+<button id="btn">跨域请求</button>
+<script>
+    // 预定义函数
+    function print(data){
+        console.log(data);
+    }
+    $(function(){
+        $('#btn').click(function(){
+            /*
+            // alert(111);
+            // 获取页面的body标签的元素
+            var body = document.getElementsByTagName('body')[0];
+            // 通过代码创建一个<script>标签
+            var script = document.createElement('script');
+            script.type ='text/javascript';
+            script.src='http://localhost:8000/cross_server?callback=print';
+            // 将<script>标签 动态的添加到body中
+            body.append(script);
+            */
+            /*
+            $.ajax({
+                url:'http://localhost:8000/cross_server',
+                type:'get',
+                dataType:'jsonp',
+                jsonp:'callback',
+                jsonpCallback:'print'
+
+            })
+            */
+            $.ajax({
+		    url:'http://localhost:8000/cross_server_json',
+		    type:'get',
+		    dataType:'jsonp',//指定为跨域访问
+		    // function(data)相当于上面的print函数
+            success: function(data){
+                console.log(data);
+            }
+	});
+
+
+        })
+    })
+</script>
+```
+
