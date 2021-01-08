@@ -160,7 +160,7 @@ html = requests.get(url=url, headers=headers).text
 # 3. 保存到本地文件
 filename = '{}.html'.format(word)
 with open(filename, 'w', encoding='utf-8') as f:
-    f.write(html
+    f.write(html)
             
 ＃ 获取同一个人的前５页信息存储到５个文件中。
 word=input('请输入搜索关键字：')
@@ -184,10 +184,6 @@ for i in range(1,6):
 2、输入起始页: 1
 3、输入终止页: 2
 4、保存到本地文件：赵丽颖吧_第1页.html、赵丽颖吧_第2页.html
-
-
-
-
 ```
 
 ### **4.2 实现步骤**
@@ -540,7 +536,57 @@ if __name__ == '__main__':
     spider.crawl()
 ```
 
-## **7. MySQL数据持久化**
+```python
+范例：爬虫爬取豆瓣电影榜单几页。
+import re
+import time
+
+import requests
+import random
+
+# https://maoyan.com/board/4?offset=0
+# https://maoyan.com/board/4?offset=10
+# https://maoyan.com/board/4?offset=20
+
+class MovieSpider:
+
+    def __init__(self):
+        self.url='https://maoyan.com/board/4?offset={}'
+        self.headers={'User-Agent': 'Mozilla/4.0(compatible;MSIE7.0;WindowsNT6.0)'}
+
+    def get_html(self,url):
+        html=requests.get(url=url,headers=self.headers).text
+        self.parse_html(html)
+
+    def parse_html(self,html):
+        reg='<div class="movie-item-info">.*?data-act="boarditem-click" data-val=.*?>(.*?)</a></p>.*?<p class="star">(.*?)</p>.*?上映时间：(.*?)</p>'
+        r_list=re.findall(reg,html,re.S)
+        self.save_html(r_list)
+
+    def save_html(self,r_list):
+        item = {}
+        for r_tuple in r_list:
+            item['电影名称'] = r_tuple[0].strip()
+            item['电影主演'] = r_tuple[1].strip()
+            item['上映时间'] = r_tuple[2].strip()
+            print(item)
+
+    def crawl(self):
+        # 爬取榜单前几页
+        start=int(input("请输入起始页："))
+        end=int(input("请输入终止页："))
+        for page in range(start,end+1):
+            page_url=self.url.format((page-1)*10)
+            self.get_html(url=page_url)
+            time.sleep(random.randint(1, 5))  #适当调整时间
+            
+if __name__ == '__main__':
+    Movie=MovieSpider()
+    Movie.crawl()
+
+```
+
+## 7. MySQL数据持久化**
 
 ### **7.1 pymysql回顾**
 
@@ -550,8 +596,8 @@ if __name__ == '__main__':
   create database noveldb charset utf8;
   use noveldb;
   create table novel_tab(
-  title varchar(100),
   href varchar(500),
+  title varchar(100),
   author varchar(100),
   comment varchar(500)
   )charset=utf8;

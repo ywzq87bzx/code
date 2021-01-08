@@ -1,6 +1,7 @@
 import re
 import time
 
+import pymongo
 import requests
 import random
 
@@ -8,6 +9,9 @@ class NovelSpider:
     def __init__(self):
         self.url = 'https://www.biqukan.cc/fenlei1/{}.html'
         self.headers = {'User-Agent': 'Mozilla/4.0(compatible;MSIE7.0;WindowsNT6.0)'}
+        self.conn=pymongo.MongoClient('localhost',27017)
+        self.db=self.conn['noveldb']
+        self.myset=self.db['novelset']
 
     def get_html(self,url):
         html = requests.get(url=url, headers=self.headers).text
@@ -25,7 +29,8 @@ class NovelSpider:
             item['href'] = r_tuple[1].strip()
             item['author']=r_tuple[2].strip()
             item['comment']=r_tuple[3].strip()
-            print(item)
+            self.myset.insert_one(item)
+
     def crawl(self):
         for page in range(1,3):
             page_url=self.url.format(page)

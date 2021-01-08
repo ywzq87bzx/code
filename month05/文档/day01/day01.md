@@ -1,7 +1,3 @@
-**王伟超**
-
-**wangweichao@tedu.cn**
-
 # **SPIDER-DAY01**
 
 ## **1. 网络爬虫概述**

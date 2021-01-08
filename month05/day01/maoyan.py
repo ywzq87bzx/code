@@ -4,11 +4,9 @@ import time
 import requests
 import random
 
-
 # https://maoyan.com/board/4?offset=0
 # https://maoyan.com/board/4?offset=10
 # https://maoyan.com/board/4?offset=20
-
 
 class MovieSpider:
 
@@ -34,10 +32,15 @@ class MovieSpider:
             print(item)
 
     def crawl(self):
-        for page in range(1,4):
+        # 爬取榜单前几页
+        start=int(input("请输入起始页："))
+        end=int(input("请输入终止页："))
+        for page in range(start,end+1):
             page_url=self.url.format((page-1)*10)
+            print(page)
             self.get_html(url=page_url)
-            time.sleep(random.randint(1, 2))
+            time.sleep(random.randint(1, 5))
+
 if __name__ == '__main__':
     Movie=MovieSpider()
     Movie.crawl()
