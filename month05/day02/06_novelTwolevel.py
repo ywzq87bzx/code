@@ -13,8 +13,8 @@ from fake_useragent import UserAgent
 class NovelSpider1:
     def __init__(self):
         self.url = 'https://www.biqukan.cc/fenlei1/{}.html'
-        # self.db = pymysql.connect('localhost', 'root', '123456', 'noveldb2', charset='utf8')
-        # self.cur = self.db.cursor()
+        self.db = pymysql.connect('localhost', 'root', '123456', 'noveldb2', charset='utf8')
+        self.cur = self.db.cursor()
         self.r = redis.Redis(host='127.0.0.1',port=6379,db=0)
 
 
@@ -48,6 +48,10 @@ class NovelSpider1:
             finger=self.md5_href(item['href'])
             if self.r.sadd('novel:spider',finger):
                 self.parse_two_page(item)
+                for k,v in item:
+                     self.save_html(v)
+                print(first)
+                print(item)
             else:
                 sys.exit("更新完成")
 
@@ -56,22 +60,22 @@ class NovelSpider1:
         second_regex = '<dd class="col-md-4"><a href="(.*?)">(.*?)</a></dd>'
         second_list = self.func_html(second_regex, second_html)
         item['novel_info'] = second_list
-        # self.save_html(item)
+
 
 
     def save_html(self,item):
         ins = 'insert into novel_tab values(%s,%s,%s,%s,%s)'
-        # self.cur.execute(ins, item)
-        # self.db.commit()
+        self.cur.execute(ins, item)
+        self.db.commit()
 
 
     def crawl_html(self):
-        for page in range(1, 3):
+        for page in range(1, 2):
             page_url = self.url.format(page)
             self.parse_html(url=page_url)
             time.sleep(random.randint(1, 5))
-        # self.cur.close()
-        # self.db.close()
+        self.cur.close()
+        self.db.close()
 
 if __name__ == '__main__':
     spider = NovelSpider1()

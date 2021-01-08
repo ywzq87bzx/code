@@ -22,6 +22,7 @@ class NovelSpider:
     def save_html(self,r_list):
             ins = 'insert into novel_tab values(%s,%s,%s,%s)'
             for r_tuple in r_list:
+                print(r_tuple)
                 self.cur.execute(ins,r_tuple)
                 self.db.commit()
 
