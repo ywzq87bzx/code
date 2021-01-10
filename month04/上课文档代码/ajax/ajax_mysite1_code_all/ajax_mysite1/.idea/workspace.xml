@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a5b3fb6-6efd-49fc-9361-874ef8017f96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../django/day07/day07_code_all/day07/mysite7/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../django/day07/day07_code_all/day07/mysite7/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../文档/ajax/day01-note/AJAX╜╠│╠.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../文档/ajax/day01-note/AJAX╜╠│╠.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

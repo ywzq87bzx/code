@@ -199,22 +199,57 @@ xhr.onreadystatechange = function(){
 }
 //4设置Content-Type;
 //默认ajax post的Content-Type为 "text/plain;charset=utf-8"
+//设置请求头，指定Content-Type的值application/x-www-form-urlencoded
 xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 //5.发送请求
-xhr.send('请求数据');
+xhr.send('请求数据'); 
 //请求数据同查询字符串 "uname=guoxiaonao&age=18"
 ```
 
 注意：django中post需要传递csrf_token,否则触发响应码403，拒绝访问；
 
-获取csrf_token方法如下
+ 
 
 ```javascript
 var csrf=$("[name='csrfmiddlewaretoken']").val();
 #获取后，将token放在post body数据中一并提交
 ```
 
+```python
+json封装的post请求:
+    <script src="/static/js/jquery-1.11.3.js"></script>
+<body>
+{% csrf_token %}
+<p>
+    用户名：<input type="text" id="uname">
+</p>
+<p>
+    密码：<input type="text" id="pwd">
+</p>
+<p>
+    <button id="btn">提交</button>
+</p>
+<script>
+    $(function(){
+        $('#btn').click(function(){
+            var uname =$('#uname').val();
+            var pwd = $('#pwd').val();
+            var csrf=$("[name='csrfmiddlewaretoken']").val();
+            var params = 'uname='+uname+'&pwd='+pwd+'&csrfmiddlewaretoken='+csrf;
+            console.log(params);
+            $.ajax({
+                url:'/register',
+                type:'post',
+                data:params,
+                success:function(res){
+                    alert(res);
+                }
+            })
 
+        })
+    })
+</script>
+```
 
 ## 2.jquery对 ajax 的支持（生成一个JS库，方便对js和ajax操作）
 

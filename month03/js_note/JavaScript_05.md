@@ -21,7 +21,51 @@ jQuery是JavaScript的工具库，对原生JavaScript中的DOM操作、事件处
  $("body,h1,p")
  //选择器的特点，与样式选择器一致
 ```
+```js
+<title>Document</title>
+</head>
+<body>
+  <div id="header"></div>
+
+  <!-- 一定要先引入文件 再使用jQuery操作 -->
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    var header = document.getElementById('header')
+    // jquery
+    // Uncaught ReferenceError: $ is not defined jQuery文件没有引入或引入失败
+    console.log($);
+    var $header = $('#header');
+    // 原生JS对象 或 DOM对象
+    // 原生JS对象可以使用document提供的方法和属性
+    // 如： innerHTML   对象.className 
+    // 对象.onclicke 
+    // header.innerHTML = 'hello world';
+    console.log(header);
+
+    //jQuery对象 可以使用jQuery提供的方法和属性
+    console.log($header);
+    $header.html('hello world');//传递参数的方式，之前是属性赋值。
+
+    // js对象-->jq对象
+    console.log($(header));
+    // jq对象-->js对象
+    console.log($header[0]);
+
+    // document.getElementById('header').innerHTML = 'hello world';
+
+    // 定义一个函数 通过id查找元素
+    // function $$(id){
+    //   return document.getElementById(id);
+    // }
+    // $$('header').innerHTML = 'hello world';
+  </script>
+</body>
+```
+
+
+
 #### 3）原生JavaScript对象与jQuery对象
+
 原生JavaScript对象与jQuery对象的属性和方法不能混用。可以根据需要，互相转换 :
 1. 原生JavaScript转换jQuery对象
     $(原生对象)，返回 jQuery 对象
@@ -67,20 +111,144 @@ ID 选择器：$("#d1")
 :not(选择器)
   否定筛选,除()中选择器外,其他元素
 ```
+```js
+<title>查找页面元素</title>
+</head>
+<body>
+  <h1>上面的兄弟 你们好吗？</h1>
+  <ul id="list">
+    <li >item1</li>
+    <li class="item">item2</li>
+    <li class="item">item3</li>
+    <li >item4</li>
+  </ul>
+  <h1>hello world</h1>
+  <p>中午吃啥？</p>
+
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // $('li:last').css('color','red');
+    //奇数索引值  第二个(1)   第四个(3)
+    $('li:odd').css('color','red');
+    $('li:even').css('color','blue');
+    // eq(i) 匹配索引值等于i的元素
+    // lt(i) 小于i
+    // gt(i) 大于i
+    $('li:eq(2)').css('font-size','30px');
+    $('li:lt(2)').css('font-weight','bold');
+    // 找全部li中除了最后一个li的其他元素
+    $('li:not(li:last)').css('text-align','center');
+
+
+    // $('#list').parents()//找父元素和祖先元素，可以传入选择器作参数精确查找某些祖先元素
+    // $('#list').parent()//找父元素
+    // $('#list').siblings() 查找全部的兄弟元素 ，可以传入选择器作参数精确查找某些兄弟元素
+    // console.log($('#list').siblings('p'));
+
+
+    // 选择器1+选择器2   相邻兄弟选择器
+    // 找选择器1  后面的第一个  符合选择器2  的元素
+    // $('#list+h1').css('color','red');//生效
+    // $('#list+p').css('color','red');//不生效
+    // console.log($('#list+p'));//空的jq对象
+
+    // 选择器1~选择器2  通用兄弟选择器
+    // 找选择器1 后面所有 符合选择器2 的元素
+    // $('#list~p').css('color','blue');
+
+    // list.style = 'list-style:none';
+    // $('#list').css('list-style','none');
+    // $('.item').css('color','red');
+    // $('li').css('font-weight','bold');
+  </script>
+</body>
+```
+
+
+
 #### 5）操作元素内容
+
 ```javascript
 html() //设置或读取标签内容,等价于原生innerHTML,可识别标签语法
 text() //设置或读取标签内容,等价于innerText,不能识别标签
 val()  //设置或读取表单元素的值,等价于原生value属性
+ <input type="text" id="key">
+  <h1>xxx</h1>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // input.value  --> $('#key').val()
+    // h1.innerHTML = 值
+    // key.onchange = function(){}
+    $('#key').change(function(){
+      // 当值发生改变时  将文本框的值放入h1中显示
+      // h1.innerHTML = input.value
+      $('h1').html($('#key').val());
+    });
+  </script>
+</body>
 ```
 #### 6）操作标签属性
 1. attr("attrName","value")
     设置或读取标签属性
+    
 2. prop("attrName","value")
     设置或读取标签属性
     注意 :在设置或读取元素属性时,attr()和prop()基本没有区别;但是在读取或设置表单元素(按钮)的选中状态时,必须用prop()方法,attr()不会监听按钮选中状态的改变,只看标签属性checked是否书写
+    
 3. removeAttr("attrName")
     移除指定属性
+    
+    ```javascript
+    <title>操作元素属性</title>
+    </head>
+    <body>
+      <div class="red" id="div1">
+        hello world
+      </div>
+    
+      <div>
+        <input type="text" placeholder="请输入用户名">
+      </div>
+      <div>
+        <input type="checkbox" id="canSubmit">请阅读并同意协议
+      </div>
+      <button id="btn">提交</button>
+      <script src="../js/jquery.min.js"></script>
+      <script>
+        // 当按钮被点击的时候 判断用户是否选中协议
+        // btn.onclick = function(){}
+        $('#btn').click(function(){
+          // 如果用户选中协议 弹框提示提交成功
+          // 如果用户没有选中协议 弹框提示 请勾选协议
+          if($('#canSubmit').prop('checked')){
+            alert('提交成功')
+          }else{
+            alert('请勾选协议')
+          }
+    
+    
+    
+          // 通过checked属性判断按钮是否被选中
+          // var res = $('#canSubmit').attr('checked')
+          // var res2 = $('#canSubmit').prop('checked');
+          // console.log($('#canSubmit'));
+          // console.log('attr的结果'+res);
+          // console.log('prop的结果'+res2);
+        })
+    
+        // 获取元素属性的值
+        // var res = $('#div1').attr('class');
+        // console.log(res);
+        // var res = $('#div1').prop('class');
+        // console.log(res);
+        // 修改/设置元素属性的值
+        // $('#div1').attr('id','title');
+        // $('#div1').prop('id','title');
+      </script>
+    </body>
+    ```
+    
+    
 #### 7）操作标签样式
 1. 为元素添加id/class属性,对应选择器样式
 2. 针对类选择器,提供操作class属性值的方法
@@ -88,6 +256,119 @@ val()  //设置或读取表单元素的值,等价于原生value属性
 addClass("className")	//添加指定的类名
 removeClass("className")//移除指定的类型,如果参数省略,表示清空class属性值
 toggleClass("className")//结合用户行为,实现动态切换类名.如果当前元素存在指定类名,则移除;不存在则添加
+ <title>通过class属性修改样式</title>
+  <style>
+    .red{
+      color:red;
+      /* font-size: 30px; */
+      font-weight: bold;
+     
+    }
+    .center{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">hello world</div>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // $('div').addClass('red');
+    // $('div').removeClass('center');
+    // 切换样式
+    // 当前有样式red  就移除样式red
+    // 当前没有样式red  就添加样式red
+    $('div').click(function(){
+      $('div').toggleClass('red');
+    })
+
+    // 
+    $('div').css('width','300px').css('height','300px').css('background-color','green');
+
+    $('div').css({
+      "width":"300px",
+      "height":"300px",
+      "background-color":"lightgreen",
+    })
+  </script>
+</body>
+
+//-------------------------------------------------------------------//
+<title>导航条</title>
+  <style>
+    /* 清除默认样式 */
+    a{
+      color: #222;
+      text-decoration: none;
+    }
+    ul{
+      margin: 0;
+      padding: 0;
+      /* 清除列表样式 小圆点 */
+      list-style: none;
+      border: 1px solid red;
+      /* 解决子元素浮动父元素没有高度的问题 */
+      overflow: hidden;
+    }
+    /* 10:00~10:15 */
+    li{
+      float: left;
+    }
+    .first{
+      color: #999;
+      margin: 5px 0; 
+    }
+    .item{
+      margin: 5px 10px;
+      padding: 0 5px;
+    }
+    .active,.item:hover{
+      background-color: red;
+    }
+    .active>a,.item:hover>a{
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="first">难度：</li>
+    <li class="item"><a href="#">全部</a></li>
+    <li class="item"><a href="#">初级</a></li>
+    <li class="item active">
+      <a href="#">中级</a>
+    </li>
+    <li class="item"><a href="#">高级</a></li>
+  </ul> 
+
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // day07/nav.html
+    // 14:48~15:05
+    $('.item').click(function(){
+      // 点击当前item时添加样式类active，兄弟们移除样式active
+      $(this).addClass('active').siblings('.active').removeClass('active');
+
+      // 查找所有的item移除class active
+      // 为当前元素添加class active
+      // this 是原生js对象 --> $(this)jq对象
+
+      // $('.item').removeClass('active');
+      // $(this).addClass('active');
+    })
+
+    // var items = document.getElementsByClassName('item');
+    // console.log(items);
+    // for(var i=0;i<items.length;i++){
+    //   items[i].onclick = function(){
+    //     for(var j=0;j<items.length;j++){
+    //       items[j].className = 'item';
+    //     }
+    //     this.className = 'item active';
+    //   }
+    // }
+  </script>
+</body>
 ```
 3. 操作行内样式
 ```javascript
@@ -126,6 +407,37 @@ $obj.before(newObj);	//在$obj的前面添加兄弟元素
 ```javascript
 $obj.remove();	//移除$obj
 ```
+```javascript
+ <title>创建、添加、删除页面元素</title>
+</head>
+<body>
+
+
+  <hr>
+  
+  <button id="add">创建并添加元素</button>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // 删除hr
+    $('hr').remove();
+
+    $('#add').click(function(){
+      var html = $('<h1></h1>'); //接收的是字符串类型
+      html.html('使用JQ创建的对象').css('text-align','center');
+      // 作为body的子元素添加
+      // $('body').prepend(html);
+      // $('body').append(html);  最终只会添加一个，如果是新元素会不断添加
+
+      // 作为兄弟元素添加
+      // $('hr').before(html);
+      // $('hr').after(html);
+    }) 
+  </script>
+</body>
+```
+
+
+
 #### 9）动画效果
 
 1. 显示和隐藏
@@ -156,8 +468,103 @@ $obj.remove();	//移除$obj
    ```
 
    - styles    必需。规定产生动画效果的 CSS 样式和值
+   
    - speed   可选。规定动画的速度。默认是 "normal"
+   
    - callback   可选。show 函数执行完之后，要执行的函数
+   
+     ```javascript
+      <title>动画</title>
+       <style>
+         button{
+           font-size: 25px;
+         }
+       </style>
+     </head>
+     <body>
+       <div id="target">
+         <img src="../imgs/gm1-6.jpg" alt="">
+       </div>
+       <button id="btn">隐藏</button>
+       <button id="btn2">上推</button>
+       <button id="btn3">淡隐</button>
+       <script src="../js/jquery.min.js"></script>
+       <script>
+         // 16:50~17:05
+         // 当按钮为隐藏时 点击隐藏div后 将按钮改为显示
+         // 当按钮为显示时 点击显示div后 将按钮改为隐藏
+         $('#btn3').click(function(){
+           var text = $('#btn3').html();
+           if(text == '淡隐'){
+             $('#target').fadeOut(3000,function(){
+               $('#btn3').html('淡现');
+             });
+           }else{
+             $('#target').fadeIn(3000,function(){
+               $('#btn3').html('淡隐');
+             });
+           }
+         })
+     
+     
+     
+         $('#btn2').click(function(){
+           var text = $('#btn2').html();
+           if(text == '上推'){
+             $('#target').slideUp(3000,function(){
+               $('#btn2').html('下拉');
+             });
+           }else{
+             $('#target').slideDown(3000,function(){
+               $('#btn2').html('上推');
+             });
+           }
+         })
+     
+         $('#btn').click(function(){
+           var text = $('#btn').html();
+           if(text == '隐藏'){
+             $('#target').hide(3000,function(){
+               $('#btn').html('显示');
+             });
+           }else{
+             $('#target').show(3000,function(){
+               $('#btn').html('隐藏');
+             });
+           }
+         })
+       </script>
+     ```
+   
+     ```javascript
+     <title>自定义动画</title>
+       <style>
+         #ball{
+           width: 200px;
+           height: 200px;
+           background-color: orangered;
+         }
+       </style>
+     </head>
+     <body>
+       <div id="ball"></div>
+       <script src="../js/jquery.min.js"></script>
+       <script>
+         $('#ball').animate({
+           "border-radius":"50%",
+           "margin-left":"300px",
+         },2000,function(){
+           // 再次设置一个自定义动画
+           $('#ball').animate({
+             "margin-left":"0",
+           },2000,function(){
+             $('#ball').fadeOut(2000)
+           })
+         })
+       </script>
+     ```
+   
+     
 
 #### 10）数据与对象遍历
 
@@ -181,7 +588,51 @@ $obj.remove();	//移除$obj
    必需。为每个匹配元素规定运行的函数。
 
    - *index* - 选择器的 index 位置
+   
    - data- 当前的数据
+   
+     ```javascript
+      <title>遍历操作</title>
+     
+       <script src="../js/jquery.min.js"></script>
+       <script>
+         $(function () {
+           $('div').each(function (i, o) {
+             // 遍历元素之后要做的事情
+             // 参数i,o是由each传递的  i表示当前的索引值 o表示当前的页面元素对象(原生JS对象)
+             console.log(i, o);
+           });
+         })
+         // 对数据的处理
+         var arr = ['北京', '上海', '深圳', '沈阳'];
+         // for(var i=0;i<arr.length;i++){}
+         // for(var i in arr){}
+         $.each(arr, function (i, e) {
+           console.log(i, e);
+         })
+       </script>
+     </head>
+     
+     <body>
+       <div>div1</div>
+       <div>div2</div>
+       <div>div3</div>
+       <div>div4</div>
+     
+       <script>
+         // window.onload = function(){
+         //   console.log('hhhh')
+         // }
+     
+         $(function(){
+           console.log('这是第二个$function')
+         })
+       </script>
+     
+     </body>
+     ```
+   
+     
 #### 11）jQuery事件处理
 
 1. 文档加载完毕
@@ -218,7 +669,7 @@ $(function(){
   $("div").click(function(){});  
 ```
 
-3. this表示事件的触发对象，在jquery中可以使用，注意转换类型。this为原生对象只能使用原生的属性和方法，可以使用$(this)转换为jquery对象，使用jquery方法。
+3. **this表示事件的触发对象，在jquery中可以使用，注意转换类型。this为原生对象只能使用原生的属性和方法，可以使用$(this)转换为jquery对象，使用jquery方法。**
 
 ## 3.实战
 
