@@ -283,6 +283,53 @@ if __name__ == '__main__':
       spider.crawl()
   ```
 
+  ```
+  myself的
+  import re
+  import time
+  
+  import pymongo
+  import requests
+  import random
+  
+  class NovelSpider:
+      def __init__(self):
+          self.url = 'https://www.biqukan.cc/fenlei1/{}.html'
+          self.headers = {'User-Agent': 'Mozilla/4.0(compatible;MSIE7.0;WindowsNT6.0)'}
+          self.conn=pymongo.MongoClient('localhost',27017)
+          self.db=self.conn['noveldb']
+          self.myset=self.db['novelset']
+  
+      def get_html(self,url):
+          html = requests.get(url=url, headers=self.headers).text
+          self.parse_html(html)
+      def parse_html(self,html):
+          reg='<div class="caption">.*?<a href="(.*?)" title="(.*?)">.*?<small.*?>(.*?)</small>.*?>(.*?)</p>'
+          r_list=re.findall(reg,html,re.S)
+          self.save_html(r_list)
+  
+      def save_html(self,r_list):
+          for r_tuple in r_list:
+              item={}
+              # item['href']=r_tuple[0]
+              item['title']=r_tuple[0].strip()
+              item['href'] = r_tuple[1].strip()
+              item['author']=r_tuple[2].strip()
+              item['comment']=r_tuple[3].strip()
+              self.myset.insert_one(item)
+  
+      def crawl(self):
+          for page in range(1,3):
+              page_url=self.url.format(page)
+              self.get_html(url=page_url)
+              time.sleep(random.randint(1,2))
+  
+  if __name__ == '__main__':
+      spider = NovelSpider()
+      spider.crawl()
+  
+  ```
+  
   
 
 ## **3. 笔趣阁多级页面爬虫**
@@ -395,6 +442,95 @@ if __name__ == '__main__':
     spider = NovelSpider()
     spider.run()
 ```
+
+```python
+myself
+import sys
+import time
+
+import pymysql
+import requests
+import random
+import re
+import redis
+import hashlib
+from fake_useragent import UserAgent
+
+
+class NovelSpider1:
+    def __init__(self):
+        self.url = 'https://www.biqukan.cc/fenlei1/{}.html'
+        self.db = pymysql.connect('localhost', 'root', '123456', 'noveldb2', charset='utf8')
+        self.cur = self.db.cursor()
+        self.r = redis.Redis(host='127.0.0.1',port=6379,db=0)
+
+
+    def get_html(self, url):
+        headers = {'User-Agent': UserAgent().random}
+        html = requests.get(url=url,
+                            headers=headers).text
+        return html
+
+    def func_html(self, regex, html):
+        r_list = re.findall(regex, html, re.S)
+        return r_list
+
+    def md5_href(self,href):
+        md5 = hashlib.md5()
+        md5.update(href.encode())
+        result = md5.hexdigest()
+        return result
+
+    def parse_html(self, url):
+        first_html = self.get_html(url=url)
+        first_regex = '<div class="caption">.*?<a href="(.*?)" title="(.*?)">.*?<small.*?>(.*?)</small>.*?>(.*?)</p>'
+        first_list = self.func_html(first_regex, first_html)
+        for first in first_list:
+            item = {}
+            item['href'] = first[0]
+            item['title'] = first[1]
+            item['author'] = first[2]
+            item['comment'] = first[3]
+            # 接着抓取二级页面的数据(item['herf'])
+            finger=self.md5_href(item['href'])
+            if self.r.sadd('novel:spider',finger):
+                self.parse_two_page(item)
+                for k,v in item:
+                     self.save_html(v)
+                print(first)
+                print(item)
+            else:
+                sys.exit("更新完成")
+
+    def parse_two_page(self, item):
+        second_html = self.get_html(url=item['href'])
+        second_regex = '<dd class="col-md-4"><a href="(.*?)">(.*?)</a></dd>'
+        second_list = self.func_html(second_regex, second_html)
+        item['novel_info'] = second_list
+
+
+
+    def save_html(self,item):
+        ins = 'insert into novel_tab values(%s,%s,%s,%s,%s)'
+        self.cur.execute(ins, item)
+        self.db.commit()
+
+
+    def crawl_html(self):
+        for page in range(1, 2):
+            page_url = self.url.format(page)
+            self.parse_html(url=page_url)
+            time.sleep(random.randint(1, 5))
+        self.cur.close()
+        self.db.close()
+
+if __name__ == '__main__':
+    spider = NovelSpider1()
+    spider.crawl_html()
+
+```
+
+
 
 ### **3.4 练习**
 
@@ -583,6 +719,7 @@ XPath即为XML路径语言，它是一种用来确定XML文档中某部分位置
 
   ```python
   【1】// : 从所有节点中查找（包括子节点和后代节点）
+      /：代表当前下的子节点
   【2】@  : 获取属性值
     2.1> 使用场景1（属性值作为条件）
          //div[@class="movie-item-info"]
@@ -657,10 +794,134 @@ XPath即为XML路径语言，它是一种用来确定XML文档中某部分位置
     书籍评分：
     评论人数：
     书籍描述：
-【3】
+【3】瓜子二手车综合练习
+	3.1> 官网地址: https://www.guazi.com/
+         点击：我要买车
+         示例URL地址：https://www.guazi.com/bj/buy/o1/#bread
+	3.2> 所抓数据
+    	 一级页面(1个数据): 汽车详情页链接
+         二级页面(1个数据): 汽车名称
+                         (自己决定是否扩展:行驶里程、排量、变速箱、价格)
+    3.3> 要求
+         1、将所抓数据存入MySQL数据库
+         2、将所抓数据存入MongoDB数据库
+         3、将所抓数据存入CSV文件
+         4、做成增量爬虫(新更新的汽车在前面)
+    3.4> 提示
+    	 1、多级页面抓取：定义功能函数
+         2、瓜子二手车验证了User-Agent和Cookie
+            Cookie、User-Agent、URL地址必须都是自己浏览器中的
+         3、如何抓取Cookie和User-Agent
+            打开浏览器,输入 www.guazi.com 回车
+            F12 - network - All , 刷新页面
+            控制台中,找到最上面的网络数据包 buy/ 并点击
+            右侧 Headers - Request Headers ,从中复制 Cookie和User-Agent
+ 
+# 定义headers成如下,要定义自己的,不要使用笔记中这个
+headers = {
+    'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36',
+    'Cookie' : 'antipas=4r5556Z0K10n7I4S876043404Y; uuid=f23d64b3-1017-4f11-e01e-6c55db5bb956; clueSourceCode=%2A%2300; user_city_id=12; ganji_uuid=4176371815537189255210; sessionid=b0a8ef58-7858-418f-9d3c-b6e675bdf646; cainfo=%7B%22ca_a%22%3A%22-%22%2C%22ca_b%22%3A%22-%22%2C%22ca_s%22%3A%22self%22%2C%22ca_n%22%3A%22self%22%2C%22ca_medium%22%3A%22-%22%2C%22ca_term%22%3A%22-%22%2C%22ca_content%22%3A%22-%22%2C%22ca_campaign%22%3A%22-%22%2C%22ca_kw%22%3A%22-%22%2C%22ca_i%22%3A%22-%22%2C%22scode%22%3A%22-%22%2C%22keyword%22%3A%22-%22%2C%22ca_keywordid%22%3A%22-%22%2C%22display_finance_flag%22%3A%22-%22%2C%22platform%22%3A%221%22%2C%22version%22%3A1%2C%22client_ab%22%3A%22-%22%2C%22guid%22%3A%22f23d64b3-1017-4f11-e01e-6c55db5bb956%22%2C%22ca_city%22%3A%22bj%22%2C%22sessionid%22%3A%22b0a8ef58-7858-418f-9d3c-b6e675bdf646%22%7D; Hm_lvt_bf3ee5b290ce731c7a4ce7a617256354=1610098265; close_finance_popup=2021-01-08; _gl_tracker=%7B%22ca_source%22%3A%22-%22%2C%22ca_name%22%3A%22-%22%2C%22ca_kw%22%3A%22-%22%2C%22ca_id%22%3A%22-%22%2C%22ca_s%22%3A%22self%22%2C%22ca_n%22%3A%22-%22%2C%22ca_i%22%3A%22-%22%2C%22sid%22%3A63151323397%7D; cityDomain=bj; preTime=%7B%22last%22%3A1610098913%2C%22this%22%3A1610098225%2C%22pre%22%3A1610098225%7D; Hm_lpvt_bf3ee5b290ce731c7a4ce7a617256354=1610098951',
+}
 ```
 
-## **8如何让python的headers中自动生成user_agent:**
+```python
+瓜子二手车作业：
+
+"""
+一级页面: 汽车详情页链接
+二级页面: 汽车名称、... ...
+增量爬虫
+"""
+import requests
+import re
+import time
+import random
+from hashlib import md5
+import redis
+import sys
+
+class CarSpider:
+    def __init__(self):
+        self.url = 'https://www.guazi.com/bj/buy/o{}/#bread'
+        self.headers = {
+            'Cookie':'antipas=9c07029166N5NdB61090hVK; uuid=80480517-5cc9-4687-dd22-1df01a0fd096; ganji_uuid=1561931600173065002669; lg=1; clueSourceCode=%2A%2300; sessionid=6a15cce4-fb19-4d7e-a6e6-1a5b566e6a51; Hm_lvt_bf3ee5b290ce731c7a4ce7a617256354=1609990529,1610272931,1610328303; lng_lat=116.91886_39.95641; gps_type=1; close_finance_popup=2021-01-11; cainfo=%7B%22ca_a%22%3A%22-%22%2C%22ca_b%22%3A%22-%22%2C%22ca_s%22%3A%22self%22%2C%22ca_n%22%3A%22self%22%2C%22ca_medium%22%3A%22-%22%2C%22ca_term%22%3A%22-%22%2C%22ca_content%22%3A%22-%22%2C%22ca_campaign%22%3A%22-%22%2C%22ca_kw%22%3A%22-%22%2C%22ca_i%22%3A%22-%22%2C%22scode%22%3A%22-%22%2C%22keyword%22%3A%22-%22%2C%22ca_keywordid%22%3A%22-%22%2C%22display_finance_flag%22%3A%22-%22%2C%22platform%22%3A%221%22%2C%22version%22%3A1%2C%22client_ab%22%3A%22-%22%2C%22guid%22%3A%2280480517-5cc9-4687-dd22-1df01a0fd096%22%2C%22ca_city%22%3A%22langfang%22%2C%22sessionid%22%3A%226a15cce4-fb19-4d7e-a6e6-1a5b566e6a51%22%7D; user_city_id=12; _gl_tracker=%7B%22ca_source%22%3A%22-%22%2C%22ca_name%22%3A%22-%22%2C%22ca_kw%22%3A%22-%22%2C%22ca_id%22%3A%22-%22%2C%22ca_s%22%3A%22self%22%2C%22ca_n%22%3A%22-%22%2C%22ca_i%22%3A%22-%22%2C%22sid%22%3A33980038794%7D; preTime=%7B%22last%22%3A1610328485%2C%22this%22%3A1609990531%2C%22pre%22%3A1609990531%7D; Hm_lpvt_bf3ee5b290ce731c7a4ce7a617256354=1610328484; cityDomain=zz',
+            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36',
+        }
+        # 连接redis做增量
+        self.r = redis.Redis(host='localhost', port=6379, db=0)
+
+    def get_html(self, url):
+        """请求功能函数"""
+        html = requests.get(url=url, headers=self.headers).content.decode('utf-8')
+
+        return html
+
+    def refunc(self, regex, html):
+        """解析功能函数"""
+        r_list = re.findall(regex, html, re.S)
+
+        return r_list
+
+    def md5_href(self, href):
+        """md5加密功能函数"""
+        m = md5()
+        m.update(href.encode())
+
+        return m.hexdigest()
+
+    def parse_html(self, url):
+        """爬虫逻辑函数由此开始啦~~~"""
+        first_html = self.get_html(url=url)
+        first_regex = '<li data-scroll-track=.*?href="(.*?)"'
+        # href_list: ['', '', '', ...]
+        href_list = self.refunc(first_regex, first_html)
+        # for循环遍历,提取每辆汽车的具体数据
+        for href in href_list:
+            # 做增量判断
+            finger = self.md5_href(href)
+            if self.r.sadd('car:spider', finger) == 1:
+                # detail_page():抓取1辆汽车的具体数据
+                self.detail_page(href)
+                # 控制频率
+                time.sleep(random.randint(0, 1))
+            else:
+                sys.exit('更新完成')
+
+    def detail_page(self, href):
+        """二级页面解析：提取1辆汽车的具体数据"""
+        second_url = 'https://www.guazi.com' + href
+        second_html = self.get_html(url=second_url)
+        second_regex = '<div class="product-textbox">.*?<h1 class="titlebox">(.*?)</h1>.*?<li class="two"><span>(.*?)</span>.*?<li class="three"><span>(.*?)</span>.*?<li class="last"><span>(.*?)</span>.*?<span class="price-num">(.*?)</span>'
+        car_info_list = self.refunc(second_regex, second_html)
+        # car_info_list: [('名称','里程','排量','变速箱','价格')]
+        if car_info_list:
+            item = {}
+            item['title'] = car_info_list[0][0].strip().split('\r\n')[0]
+            item['km'] = car_info_list[0][1].strip()
+            item['displace'] = car_info_list[0][2].strip()
+            item['type'] = car_info_list[0][3].strip()
+            item['price'] = car_info_list[0][4].strip()
+            print(item)
+        else:
+            print('汽车具体信息提取失败')
+
+    def crawl(self):
+        for page in range(1, 2):
+            page_url = self.url.format(page)
+            self.parse_html(url=page_url)
+            # 控制频率
+            time.sleep(random.randint(1, 3))
+
+if __name__ == '__main__':
+    spider = CarSpider()
+    spider.crawl()
+
+
+```
+
+
+
+## 8如何让python的headers中自动生成user_agent:**
 
 ```
 安装：sudo pip install fake_useragent
@@ -670,7 +931,28 @@ from fake_useragent import UserAgent
 UserAgent().random
 ```
 
+## 9 爬虫程序流程：
 
+- 确认数据来源：右键-查看网页源代码-搜索关键字
+- 相应内容存在，观察url地址规律，拼接多页的URL地址
+- 正则表达式的编写
+- 正常编写代码
+
+## 10 目前遇到的反爬虫解决方案
+
+- 反爬：基于hearders反爬虫（User-Agent、cookies.....)
+
+  解决：发送请求时，携带headers参数
+
+- 反爬：基于User-Agent反爬虫-检测同一个agent访问的频率
+
+  解决：创建User-Agent池，每次访问随机选择User-Agent.
+
+  python使用：
+  from fake_useragent import UserAgent
+  UserAgent().random
+
+  
 
 
 
