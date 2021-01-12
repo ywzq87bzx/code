@@ -2,15 +2,15 @@ import json
 import time
 import requests
 
-info = requests.get('http://ipinfo.io/json').json()
-city=info['city']
-region=info['region']
-print(info,city,region)
+# info = requests.get('http://ipinfo.io/json').json()
+# city=info['city']
+# region=info['region']
+# print(info,city,region)
 
 
 # url="http://www.webxml.com.cn//WebServices/WeatherWebService.asmx/getWeatherbyCityName?theCityName=57036"
 # def get_weather(region):
-url="http://wthrcdn.etouch.cn/weather_mini?city=西安"
+url="http://wthrcdn.etouch.cn/weather_mini?city=嘉兴"
 response=requests.get(url=url)
 weather_data=json.loads(response.text)
 print(weather_data)

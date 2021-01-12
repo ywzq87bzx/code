@@ -24,6 +24,8 @@ def checkip(ip):
     try:
         # r = requests.get(URL, params=ip, timeout=3)
         r = requests.get(URL,timeout=3)
+        data = r.text.encode("latin1").decode("gbk")
+        print(data)
     except requests.RequestException as e:
         print(e)
     else:
