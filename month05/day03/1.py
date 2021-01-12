@@ -46,6 +46,6 @@ def Searchip(ip):
         print('RE Error')
 
 
-my_ip = urlopen('http://ip.42.pl/raw').read()
+my_ip = urlopen('http://ip.42.pl/raw').read().decode()
 print('ip.42.pl', my_ip.decode())
 Searchip(my_ip.decode())

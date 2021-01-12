@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a5b3fb6-6efd-49fc-9361-874ef8017f96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/5.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auto_region.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weather.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2a5b3fb6-6efd-49fc-9361-874ef8017f96" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +29,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../month05/day03" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -187,10 +178,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="717" y="370" key="FileChooserDialogImpl" timestamp="1610065847559">
+    <state x="717" y="370" key="FileChooserDialogImpl" timestamp="1610465409059">
       <screen x="67" y="27" width="1853" height="1173" />
     </state>
-    <state x="717" y="370" key="FileChooserDialogImpl/67.27.1853.1173@67.27.1853.1173" timestamp="1610065847559" />
+    <state x="717" y="370" key="FileChooserDialogImpl/67.27.1853.1173@67.27.1853.1173" timestamp="1610465409059" />
     <state width="1827" height="588" key="GridCell.Tab.0.bottom" timestamp="1610410866682">
       <screen x="67" y="27" width="1853" height="1173" />
     </state>

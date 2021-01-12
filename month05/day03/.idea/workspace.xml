@@ -2,7 +2,84 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24ba1c6f-e5e0-4bbc-a762-3bbf78bdfc30" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../month04/上课文档代码/ajax/ajax_mysite1_code_all/ajax_mysite1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../month04/上课文档代码/ajax/ajax_mysite1_code_all/ajax_mysite1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/month05.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/month05.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/.idea/day02.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/.idea/day02.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/01_guaziSpider.py" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/01_guaziSpider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/02_pymysql.py" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/02_pymysql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/04_pymongo.py" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/04_pymongo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/05_novelMongo.py" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/05_novelMongo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/06_novelTwolevel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/06_novelTwolevel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/3csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/3csv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/csv_novelSpider.py" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/csv_novelSpider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/novel.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/novel.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/novelSpider.py" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/novelSpider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day02/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../day02/test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/day03.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/day03.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01_doubanSpider.py" beforeDir="false" afterPath="$PROJECT_DIR$/01_doubanSpider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_imageSpider.py" beforeDir="false" afterPath="$PROJECT_DIR$/03_imageSpider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.py" beforeDir="false" afterPath="$PROJECT_DIR$/1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/10.py" beforeDir="false" afterPath="$PROJECT_DIR$/10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2.py" beforeDir="false" afterPath="$PROJECT_DIR$/2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3.py" beforeDir="false" afterPath="$PROJECT_DIR$/3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4.py" beforeDir="false" afterPath="$PROJECT_DIR$/4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/5.py" beforeDir="false" afterPath="$PROJECT_DIR$/5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auto_region.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_region.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baidu_fanyi.py" beforeDir="false" afterPath="$PROJECT_DIR$/baidu_fanyi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl-day01.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl-day01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawl-day02.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawl-day02.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/form_data" beforeDir="false" afterPath="$PROJECT_DIR$/form_data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers" beforeDir="false" afterPath="$PROJECT_DIR$/headers" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lianjia.py" beforeDir="false" afterPath="$PROJECT_DIR$/lianjia.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youdao_crawl.py" beforeDir="false" afterPath="$PROJECT_DIR$/youdao_crawl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/林允儿.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/林允儿.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/赵丽颖.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/赵丽颖.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/_locales/en/messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/_locales/en/messages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/_locales/zh_CN/messages.json" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/_locales/zh_CN/messages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/bg.js" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/bg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/first.html" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/first.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/icons/icon-128.png" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/icons/icon-128.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/icons/icon-16.png" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/icons/icon-16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/icons/icon-32.png" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/icons/icon-32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/icons/icon-40.png" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/icons/icon-40.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/icons/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/icons/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/icons/inactive.png" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/icons/inactive.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/img/abs-icon-big.png" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/img/abs-icon-big.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/img/chrome.png" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/img/chrome.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/img/gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/img/gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/img/google.png" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/img/google.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/img/googleplus.png" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/img/googleplus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/img/settings.png" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/img/settings.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/lib/sea.js" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/lib/sea.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/options.html" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/options.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/popup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/straightGoogle.js" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/straightGoogle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/warming.html" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/Google-Access-Helper/google-access-helper-2.3.0/warming.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/day02.html" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/day02.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../文档/day02/day02.md" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/day02.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../文档/day02/day02.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../文档/day02/day02.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +99,100 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="RunManager" selected="Python.auto_region">
+    <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="day03" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="10" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="day03" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/10.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="5" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="day03" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/5.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="auto_region" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="day03" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/auto_region.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.auto_region" />
+        <item itemvalue="Python.5" />
+        <item itemvalue="Python.10" />
+        <item itemvalue="Python.1" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -53,5 +224,25 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="722" y="297" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1610349747511" />
+    <state width="1827" height="495" key="GridCell.Tab.0.bottom" timestamp="1610469428649">
+      <screen x="67" y="27" width="1853" height="1173" />
+    </state>
+    <state width="1827" height="495" key="GridCell.Tab.0.bottom/67.27.1853.1173@67.27.1853.1173" timestamp="1610469428649" />
+    <state width="1827" height="495" key="GridCell.Tab.0.center" timestamp="1610469428648">
+      <screen x="67" y="27" width="1853" height="1173" />
+    </state>
+    <state width="1827" height="495" key="GridCell.Tab.0.center/67.27.1853.1173@67.27.1853.1173" timestamp="1610469428648" />
+    <state width="1827" height="495" key="GridCell.Tab.0.left" timestamp="1610469428647">
+      <screen x="67" y="27" width="1853" height="1173" />
+    </state>
+    <state width="1827" height="495" key="GridCell.Tab.0.left/67.27.1853.1173@67.27.1853.1173" timestamp="1610469428647" />
+    <state width="1827" height="495" key="GridCell.Tab.0.right" timestamp="1610469428649">
+      <screen x="67" y="27" width="1853" height="1173" />
+    </state>
+    <state width="1827" height="495" key="GridCell.Tab.0.right/67.27.1853.1173@67.27.1853.1173" timestamp="1610469428649" />
+    <state x="689" y="523" width="598" height="178" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1610465679386">
+      <screen x="67" y="27" width="1853" height="1173" />
+    </state>
+    <state x="689" y="523" width="598" height="178" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/67.27.1853.1173@67.27.1853.1173" timestamp="1610465679386" />
   </component>
 </project>
