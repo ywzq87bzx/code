@@ -39,22 +39,27 @@ def search_region_by_ip(computer_ip):
 # def get_weather(region):
 def search_weather(region):
     url = "http://wthrcdn.etouch.cn/weather_mini?city=%s" % region
-    response = requests.get(url=url)
-    weather_data = json.loads(response.text)
-    print(weather_data)
-    date = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-    year = str(date).split("-")[0]
-    month = str(date).split("-")[1]
-    day = weather_data['data']['forecast'][0]['date']
-    city = weather_data['data']['city']
-    weather_high = weather_data['data']['forecast'][0]['high']
-    print(year, month, day, city, weather_high)
+    try:
+        # response = requests.get(url,timeout=8)
+        response = requests.get(url)
+        weather_data = json.loads(response.text)
+        print(weather_data)
+        date = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+        year = str(date).split("-")[0]
+        month = str(date).split("-")[1]
+        day = weather_data['data']['forecast'][0]['date']
+        city = weather_data['data']['city']
+        weather_high = weather_data['data']['forecast'][0]['high']
+        print(year, month, day, city, weather_high)
+    except:
+        print("超时,请重试！")
 
 
-# url = 'http://ip.42.pl/raw'
-# computer_ip= requests.get(url).text
+url = 'http://ip.42.pl/raw'
+computer_ip= requests.get(url).text
 # computer_ip='125.123.68.154'
 # computer_ip='101.39.225.103'
-computer_ip='101.39.225.128'
-region=search_region_by_ip(computer_ip)[0]
-search_weather(region)
+# computer_ip='101.39.225.128'
+# region=search_region_by_ip(computer_ip)[0]
+# search_weather(region)
+search_weather('北京')

@@ -534,7 +534,78 @@ if __name__ == '__main__':
   spider.run()
 ```
 
-## **2. 百度翻译JS逆向爬虫**
+```python
+myself
+import requests
+import json
+import time
+import random
+from hashlib import md5
+
+class YdSpider:
+    def __init__(self):
+        self.url='http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule'
+        self.headers={
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9",
+            "Connection": "keep-alive",
+            "Content-Length": "246",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Cookie": "OUTFOX_SEARCH_USER_ID=1325636116@10.108.160.100; JSESSIONID=aaa5wjDr-bxfg5i5bw1Bx; OUTFOX_SEARCH_USER_ID_NCOO=543944615.7905612; ___rl__test__cookies=1610440265773",
+            "Host": "fanyi.youdao.com",
+            "Origin": "http//fanyi.youdao.com",
+            "Referer": "http//fanyi.youdao.com/",
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36",
+            "X-Requested-With": "XMLHttpRequest",
+        }
+        self.word=input("请输入要翻译的单词:")
+    def md5s(self,s):
+        m=md5()
+        m.update(s.encode())
+        sign = m.hexdigest()
+        return sign
+    def get_ts_salt_sign(self):
+        ts=str(int(time.time()*1000))
+        salt=ts+str(random.randint(0,9))
+        string1="fanyideskweb" + self.word + salt + "Tbh5E8=q6U3EXe+&L[4c@"
+        sign=self.md5s(string1)
+        return ts,salt,sign
+    def attack_yd(self):
+        ts,salt,sign=self.get_ts_salt_sign()
+        # print(ts,salt,sign)
+        data={
+            "i":self.word,
+            "from":"AUTO",
+            "to":"AUTO",
+            "smartresult":"dict",
+            "client":"fanyideskweb",
+            "salt":salt,
+            "sign":sign,
+            "lts":ts,
+            "bv":"34f593a29e1453bc91be38672003da85",
+            "doctype":"json",
+            "version":"2.1",
+            "keyfrom":"fanyi.web",
+            "action":"FY_BY_REALTlME",
+        }
+        html=requests.post(url=self.url,
+                           data=data,
+                           headers=self.headers).json()
+        # print(html)
+        result = html['translateResult'][0][0]['tgt']
+        print(result)
+
+
+if __name__ == '__main__':
+    spider=YdSpider()
+    spider.attack_yd()
+
+```
+
+
+
+## 2. 百度翻译JS逆向爬虫**
 
 ### **2.1 JS逆向详解**
 
@@ -720,6 +791,147 @@ if __name__ == '__main__':
     spider = BaiduTranslateSpider()
     spider.run()
 ```
+
+```python
+myself
+import execjs
+
+with open('1.js', 'r') as f:
+    js_code = f.read()
+
+js_obj = execjs.compile(js_code)
+sign=js_obj.eval("e('hello')")
+print(sign)
+
+////---1.js////
+function a(r) {
+        if (Array.isArray(r)) {
+            for (var o = 0, t = Array(r.length); o < r.length; o++)
+                t[o] = r[o];
+            return t
+        }
+        return Array.from(r)
+    }
+function n(r, o) {
+        for (var t = 0; t < o.length - 2; t += 3) {
+            var a = o.charAt(t + 2);
+            a = a >= "a" ? a.charCodeAt(0) - 87 : Number(a),
+            a = "+" === o.charAt(t + 1) ? r >>> a : r << a,
+            r = "+" === o.charAt(t) ? r + a & 4294967295 : r ^ a
+        }
+        return r
+    }
+function e(r) {
+        var i=null
+        var o = r.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g);
+        if (null === o) {
+            var t = r.length;
+            t > 30 && (r = "" + r.substr(0, 10) + r.substr(Math.floor(t / 2) - 5, 10) + r.substr(-10, 10))
+        } else {
+            for (var e = r.split(/[\uD800-\uDBFF][\uDC00-\uDFFF]/), C = 0, h = e.length, f = []; h > C; C++)
+                "" !== e[C] && f.push.apply(f, a(e[C].split(""))),
+                C !== h - 1 && f.push(o[C]);
+            var g = f.length;
+            g > 30 && (r = f.slice(0, 10).join("") + f.slice(Math.floor(g / 2) - 5, Math.floor(g / 2) + 5).join("") + f.slice(-10).join(""))
+        }
+        var u = void 0
+          , l = "" + String.fromCharCode(103) + String.fromCharCode(116) + String.fromCharCode(107);
+        u = null !== i ? i : (i = '320305.131321201' || "") || "";
+        for (var d = u.split("."), m = Number(d[0]) || 0, s = Number(d[1]) || 0, S = [], c = 0, v = 0; v < r.length; v++) {
+            var A = r.charCodeAt(v);
+            128 > A ? S[c++] = A : (2048 > A ? S[c++] = A >> 6 | 192 : (55296 === (64512 & A) && v + 1 < r.length && 56320 === (64512 & r.charCodeAt(v + 1)) ? (A = 65536 + ((1023 & A) << 10) + (1023 & r.charCodeAt(++v)),
+            S[c++] = A >> 18 | 240,
+            S[c++] = A >> 12 & 63 | 128) : S[c++] = A >> 12 | 224,
+            S[c++] = A >> 6 & 63 | 128),
+            S[c++] = 63 & A | 128)
+        }
+        for (var p = m, F = "" + String.fromCharCode(43) + String.fromCharCode(45) + String.fromCharCode(97) + ("" + String.fromCharCode(94) + String.fromCharCode(43) + String.fromCharCode(54)), D = "" + String.fromCharCode(43) + String.fromCharCode(45) + String.fromCharCode(51) + ("" + String.fromCharCode(94) + String.fromCharCode(43) + String.fromCharCode(98)) + ("" + String.fromCharCode(43) + String.fromCharCode(45) + String.fromCharCode(102)), b = 0; b < S.length; b++)
+            p += S[b],
+            p = n(p, F);
+        return p = n(p, D),
+        p ^= s,
+        0 > p && (p = (2147483647 & p) + 2147483648),
+        p %= 1e6,
+        p.toString() + "." + (p ^ m)
+    }
+
+注意：i = window[l]——————l = "" + String.fromCharCode(103) + String.fromCharCode(116) + String.fromCharCode(107)————————在console中运行得到l ='gtk',即i = window[gtk]————在网页源代码中查找window.gtk = '320305.131321201'，最终：i = '320305.131321201'。
+
+```
+
+```
+import re
+
+import execjs
+import requests
+
+
+class BaiduSpider:
+    def __init__(self):
+        self.post_url ='https://fanyi.baidu.com/v2transapi?from=zh&to=en'
+        self.get_url='https://fanyi.baidu.com/'
+        self.post_headers ={
+            "accept": "*/*",
+            'accept-encoding':'gzip, deflate, br',
+            'accept-language':'zh-CN,zh;q=0.9',
+            'content-length':'150',
+            'content-type':'application/x-www-form-urlencoded; charset=UTF-8',
+            'cookie':'BAIDUID=0494F8D75D1CD5904AF3A75D4D08C005:FG=1; BIDUPSID=0494F8D75D1CD5904AF3A75D4D08C005; PSTM=1607911099; __yjs_duid=1_16757e908b84b128619edd182cec932c1609053824189; REALTIME_TRANS_SWITCH=1; FANYI_WORD_SWITCH=1; HISTORY_SWITCH=1; SOUND_SPD_SWITCH=1; SOUND_PREFER_SWITCH=1; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; BDSFRCVID=jnPOJeC62AWK55TrpDHq25BS-250oYTTH6aoO8SeQtp50DtTOAyhEG0PVf8g0Kub1VDqogKKy2OTH9DF_2uxOjjg8UtVJeC6EG0Ptf8g0f5; H_BDCLCKID_SF=JJAO_IKMtCvbfP0k2Jo_5-4Hbp7t2D62aKDs0q3gBhcqJ-ovQTb6bpJyK4ILbh8HJmrgsCocW-Q4hUbeWfvpQxAn0xRHLPr4HGRp0bQ12l5nhMJmBUTFWq4TqfQa-qby523ion3vQpP-OpQ3DRoWXPIqbN7P-p5Z5mAqKl0MLPbtbb0xXj_0D63Lea-Jt6_s2TTW0CPyHJOoDDvdqJocy4LdjG5tWbOe5KOHWJ5C-K_hEx8zDxRvLl4B3-Aq54RM2aR-WD-KLlcT8CThMxbkQfbQ0-7hqP-jW5TaBnjRJn7JOpvwDxnxy5FvQRPH-Rv92DQMVU52QqcqEIQHQT3m5-5bbN3ut6IHtn4DoKL-JCv5eJ6x-tJqq4-0-q60etJyaR3HhIbvWJ5WqR7jDPnAMpDX3tjgaTDt0HALsxQ1LhjDShbXXMoSjxPVDtndaxclXacwWIOO3l02V-bIbn7NyxKVKf5dW4RMW20j0h7mWIQvsxA45J7cM4IseboJLfT-0bc4KKJxbnLWeIJEjjC5Dj5-jatJJ5nbKC5QB4Taajr5e-n4bbJSMPTH-UIsWP5rB2Q-5KL-J-5Ceb5nKR3UyMnXjt5ge6DttIOk-UbdJJjoqRTlLqbsQfRWqtQNXxbaJeTxoUty5DnJhhvG-xJEMf_ebPRih6j9Qg-8KpQ7tt5W8ncFbT7l5hKpbt-q0x-jLTnhVn0M5DK0hCKmjTtMDj5M5pJfeJbKaDnyLRTMHJOoDDvFhl3cy4LdjG5CLMPtJGnHQpbd-C_hEx8zD6_2hpF73-Aq54R9fN7-b4bMJCJUfMbOLJrsQfbQ0bjhqP-jW5TaoxQg-R7JOpvwDxnxy5FvQRPH-Rv92DQMVU52QqcqEIQHQT3m5-5bbN3ht6T2-DA_oKtMtCQP; BDSFRCVID_BFESS=jnPOJeC62AWK55TrpDHq25BS-250oYTTH6aoO8SeQtp50DtTOAyhEG0PVf8g0Kub1VDqogKKy2OTH9DF_2uxOjjg8UtVJeC6EG0Ptf8g0f5; H_BDCLCKID_SF_BFESS=JJAO_IKMtCvbfP0k2Jo_5-4Hbp7t2D62aKDs0q3gBhcqJ-ovQTb6bpJyK4ILbh8HJmrgsCocW-Q4hUbeWfvpQxAn0xRHLPr4HGRp0bQ12l5nhMJmBUTFWq4TqfQa-qby523ion3vQpP-OpQ3DRoWXPIqbN7P-p5Z5mAqKl0MLPbtbb0xXj_0D63Lea-Jt6_s2TTW0CPyHJOoDDvdqJocy4LdjG5tWbOe5KOHWJ5C-K_hEx8zDxRvLl4B3-Aq54RM2aR-WD-KLlcT8CThMxbkQfbQ0-7hqP-jW5TaBnjRJn7JOpvwDxnxy5FvQRPH-Rv92DQMVU52QqcqEIQHQT3m5-5bbN3ut6IHtn4DoKL-JCv5eJ6x-tJqq4-0-q60etJyaR3HhIbvWJ5WqR7jDPnAMpDX3tjgaTDt0HALsxQ1LhjDShbXXMoSjxPVDtndaxclXacwWIOO3l02V-bIbn7NyxKVKf5dW4RMW20j0h7mWIQvsxA45J7cM4IseboJLfT-0bc4KKJxbnLWeIJEjjC5Dj5-jatJJ5nbKC5QB4Taajr5e-n4bbJSMPTH-UIsWP5rB2Q-5KL-J-5Ceb5nKR3UyMnXjt5ge6DttIOk-UbdJJjoqRTlLqbsQfRWqtQNXxbaJeTxoUty5DnJhhvG-xJEMf_ebPRih6j9Qg-8KpQ7tt5W8ncFbT7l5hKpbt-q0x-jLTnhVn0M5DK0hCKmjTtMDj5M5pJfeJbKaDnyLRTMHJOoDDvFhl3cy4LdjG5CLMPtJGnHQpbd-C_hEx8zD6_2hpF73-Aq54R9fN7-b4bMJCJUfMbOLJrsQfbQ0bjhqP-jW5TaoxQg-R7JOpvwDxnxy5FvQRPH-Rv92DQMVU52QqcqEIQHQT3m5-5bbN3ht6T2-DA_oKtMtCQP; delPer=0; H_PS_PSSID=33423_33482_33354_33259_31660_33285_33286_33414_26350_33264_33389_33386_33370; PSINO=3; Hm_lvt_64ecd82404c51e03dc91cb9e8c025574=1609204273,1610444099; Hm_lpvt_64ecd82404c51e03dc91cb9e8c025574=1610445374; __yjsv5_shitong=1.0_7_126544a3cd11642be1e102bb1a85b1bdc0db_300_1610445375108_101.39.225.103_9552e9cc; yjs_js_security_passport=e162a649a25e7bc26cf72d5cffd846d431a021c2_1610445375_js; BA_HECTOR=0g0k0l8l0k0la0257q1fvshlt0r',
+            'origin':'https://fanyi.baidu.com',
+            'referer':'https://fanyi.baidu.com/?aldtype=16047',
+            'sec-fetch-dest':'empty',
+            'sec-fetch-mode':'cors',
+            'sec-fetch-site':'same-origin',
+            'user-agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36',
+            'x-requested-with':'XMLHttpRequest'
+            }
+        self.get_headers={
+            'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.116 Safari/537.36'
+        }
+        self.word = input("请输入要翻译的单词:")
+
+    def get_gtk(self):
+        html=requests.get(url=self.get_url,
+                          headers=self.get_headers
+                          ).text
+        gtk=re.findall("window.gtk = '(.*?)'",html,re.S)[0]
+        return gtk
+
+    def get_sign(self,word):
+        with open('1.js', 'r') as f:
+            gtk=self.get_gtk()
+            print(gtk)
+            js_code = f.read()
+            js_obj = execjs.compile(js_code)
+            sign = js_obj.eval('e("{}","{}")'.format(word,gtk))
+            return sign
+    def attack_bd(self):
+        sign=self.get_sign(self.word)
+        print(sign)
+        data={
+            'from':'zh',
+            # 'from':'en',
+            'to':'en',
+            # 'to':'zh',
+            'query':self.word,
+            'transtype':'translang',
+            'simple_means_flag':'3',
+            'sign':sign,
+            'token':'b06e91cd48fde5f5d8ec37eafba52191',
+            'domain':'common',}
+        html = requests.post(url=self.post_url,
+                             data=data,
+                             headers=self.post_headers).json()
+        print(html)
+        result = html['trans_result']['data'][0]['dst']
+        print(result)
+
+if __name__ == '__main__':
+    spider=BaiduSpider()
+    spider.attack_bd()
+```
+
+
 
 ## **3. 动态加载数据抓取**
 

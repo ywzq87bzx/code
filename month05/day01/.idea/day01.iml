@@ -7,6 +7,13 @@
     <orderEntry type="module" module-name="day02" />
     <orderEntry type="module" module-name="day02" />
     <orderEntry type="module" module-name="day03" />
+    <orderEntry type="module" module-name="day04" />
+    <orderEntry type="module" module-name="lianx" />
+    <orderEntry type="module" module-name="project" />
+    <orderEntry type="module" module-name="day06" />
+    <orderEntry type="module" module-name="day05" />
+    <orderEntry type="module" module-name="day03" />
+    <orderEntry type="module" module-name="day03" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Twisted Trial" />
