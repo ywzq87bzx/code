@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/day06.iml" filepath="$PROJECT_DIR$/.idea/day06.iml" />
+      <module fileurl="file://$USER_HOME$/hadoop/.idea/hadoop.iml" filepath="$USER_HOME$/hadoop/.idea/hadoop.iml" />
+      <module fileurl="file://$USER_HOME$/桌面/12212/mall/merge_mall/.idea/merge_mall.iml" filepath="$USER_HOME$/桌面/12212/mall/merge_mall/.idea/merge_mall.iml" />
     </modules>
   </component>
 </project>

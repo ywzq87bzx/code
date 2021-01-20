@@ -6,5 +6,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="merge_mall" />
+    <orderEntry type="module" module-name="hadoop" />
   </component>
 </module>

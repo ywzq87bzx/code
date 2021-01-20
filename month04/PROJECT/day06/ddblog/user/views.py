@@ -126,6 +126,7 @@ def user_avatar(request,username):
         return JsonResponse(result)
     user=request.myuser
     user.avatar=request.FILES['avatar']
+    print(user.avatar)
     user.save()
     result={'code':200,'username':user.username}
     return JsonResponse(result)
